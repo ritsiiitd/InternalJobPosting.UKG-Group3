@@ -1,8 +1,7 @@
-package com.ukgG3.IJP.Dto;
+package com.ukgG3.JobPosting.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;

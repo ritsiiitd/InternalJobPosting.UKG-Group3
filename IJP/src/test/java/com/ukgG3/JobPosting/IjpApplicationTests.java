@@ -1,4 +1,4 @@
-package com.ukgG3.IJP;
+package com.ukgG3.JobPosting;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

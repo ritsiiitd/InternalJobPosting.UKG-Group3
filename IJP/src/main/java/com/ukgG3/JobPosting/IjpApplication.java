@@ -1,4 +1,4 @@
-package com.ukgG3.IJP;
+package com.ukgG3.JobPosting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

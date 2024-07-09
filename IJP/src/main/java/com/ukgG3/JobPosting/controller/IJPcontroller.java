@@ -1,6 +1,6 @@
-package com.ukgG3.IJP.controller;
+package com.ukgG3.JobPosting.controller;
 
-import com.ukgG3.IJP.service.IAccountsService;
+import com.ukgG3.JobPosting.service.IAccountsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
