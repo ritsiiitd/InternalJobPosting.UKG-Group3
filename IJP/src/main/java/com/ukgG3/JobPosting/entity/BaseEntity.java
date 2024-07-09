@@ -1,4 +1,4 @@
-package com.ukgG3.IJP.entity;
+package com.ukgG3.JobPosting.entity;
 
 import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
