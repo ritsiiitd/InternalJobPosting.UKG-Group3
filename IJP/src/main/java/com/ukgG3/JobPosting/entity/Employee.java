@@ -31,6 +31,8 @@ public class Employee {
     private LocalDate dob;
     private String email;
     private String password;
+
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @ManyToOne
