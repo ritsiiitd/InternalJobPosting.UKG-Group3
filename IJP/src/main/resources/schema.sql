@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Employee (
-                                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                        first_name VARCHAR(50),
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
     last_name VARCHAR(50),
     dob DATE,
     email VARCHAR(50) UNIQUE,
