@@ -45,12 +45,12 @@ CREATE TABLE IF NOT EXISTS CodingLanguage (
     );
 
 CREATE TABLE IF NOT EXISTS Application (
-                                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                           app_id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                            status ENUM('APPLIED', 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED'),
     applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    applicant_id BIGINT,
-    job_posting_id BIGINT,
-    FOREIGN KEY (applicant_id) REFERENCES Employee(id),
+    employee_id BIGINT,
+    job_pos_id BIGINT,
+    FOREIGN KEY (emp_id) REFERENCES Employee(id),
     FOREIGN KEY (job_posting_id) REFERENCES JobPosting(id)
     );
 
