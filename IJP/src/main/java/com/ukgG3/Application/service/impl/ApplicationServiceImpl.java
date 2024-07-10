@@ -2,6 +2,8 @@ package com.ukgG3.Application.service.impl;
 
 import com.ukgG3.Application.Dto.ApplicationDto;
 import com.ukgG3.Application.entity.Application;
+import com.ukgG3.Application.entity.ApplicationStatus;
+import com.ukgG3.Application.exception.ResourceNotFoundException;
 import com.ukgG3.Application.mapper.ApplicationMapper;
 import com.ukgG3.Application.repository.ApplicationRepository;
 import com.ukgG3.Application.service.IApplicationService;
@@ -49,5 +51,16 @@ public class ApplicationServiceImpl implements IApplicationService {
     public void deleteApplication(Long id) {
         applicationRepository.deleteById(id);
     }
+    @Override
+    public void verifyApplicationByManagerAccepted(Long id) {
+        Application application = applicationRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Application", "id", id.toString()));
+        application.setVerified_by_manager(true);
+        application.setStatus(ApplicationStatus.ACCEPTED);
+        applicationRepository.save(application);
+    }
+
+
+
 
 }

@@ -41,4 +41,11 @@ public class ApplicationController {
         iApplicationService.deleteApplication(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}/verifyByManager")
+    public ResponseEntity<ResponseDto> verifyApplicationByManager(@PathVariable Long id) {
+        iApplicationService.verifyApplicationByManagerAccepted(id);
+        return ResponseEntity.ok(new ResponseDto("200", "Application verified by manager successfully"));
+    }
+
 }
