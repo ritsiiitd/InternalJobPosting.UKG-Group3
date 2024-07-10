@@ -1,3 +1,3 @@
-INSERT INTO Location (name) VALUES ('New York'), ('San Francisco'), ('Los Angeles');
-INSERT INTO Skill (name) VALUES ('Java'), ('Spring Boot'), ('MySQL');
-INSERT INTO CodingLanguage (name) VALUES ('Java'), ('Python'), ('JavaScript');
+-- Insert sample data into Employee table
+INSERT INTO employee (employee_id, first_name, last_name, dob, email, password, role, reports_to) VALUES
+                (1, 'John', 'Doe', '1990-01-01', 'john.doe@example.com', 'password', 'EMPLOYEE', 2)

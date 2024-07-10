@@ -1,83 +1,73 @@
-CREATE TABLE IF NOT EXISTS Employee (
-                                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                        first_name VARCHAR(50),
-    last_name VARCHAR(50),
+-- Drop existing tables if they exist
+DROP TABLE IF EXISTS employee CASCADE;
+DROP TABLE IF EXISTS job_posting CASCADE;
+DROP TABLE IF EXISTS application CASCADE;
+DROP TABLE IF EXISTS location CASCADE;
+DROP TABLE IF EXISTS coding_language CASCADE;
+DROP TABLE IF EXISTS location_junction CASCADE;
+
+-- Create Employee table
+CREATE TABLE employee (
+    employee_id BIGINT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
     dob DATE,
-    email VARCHAR(50) UNIQUE,
+    email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
-    role ENUM('EMPLOYEE', 'HR', 'MANAGER')
-    );
+    role VARCHAR(255),
+    reports_to BIGINT,
+    FOREIGN KEY (reports_to) REFERENCES employee(employee_id)
+);
 
-CREATE TABLE IF NOT EXISTS Hr (
-                                  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                  employee_id BIGINT,
-                                  FOREIGN KEY (employee_id) REFERENCES Employee(id)
-    );
+-- Create Location table
+CREATE TABLE location (
+    location_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
 
-CREATE TABLE IF NOT EXISTS JobPosting (
-                                          id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                          title VARCHAR(255),
-    description TEXT,
-    min_experience INT,
-    min_salary DOUBLE,
-    max_salary DOUBLE,
-    is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    created_by BIGINT,
-    location_id BIGINT,
-    FOREIGN KEY (created_by) REFERENCES Employee(id),
-    FOREIGN KEY (location_id) REFERENCES Location(id)
-    );
+-- Create Job Posting table
+CREATE TABLE job_posting (
+     job_pos_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+     description TEXT,
+     min_exp INT,
+     min_sal INT,
+     max_sal INT,
+     is_active BOOLEAN,
+     designation VARCHAR(255),
+     created_by BIGINT,
+     location_id BIGINT,
+     skill_id BIGINT,
+     language_id BIGINT,
+     deadline DATE,
+     FOREIGN KEY (created_by) REFERENCES employee(employee_id),
+     FOREIGN KEY (location_id) REFERENCES location(location_id)
+);
 
-CREATE TABLE IF NOT EXISTS Location (
-                                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                        name VARCHAR(255)
-    );
+-- Create Coding Language table
+CREATE TABLE coding_language (
+     language_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+     job_pos_id BIGINT,
+     lang_name VARCHAR(255),
+     skill_level VARCHAR(255),
+     FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
+);
 
-CREATE TABLE IF NOT EXISTS Skill (
-                                     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                     name VARCHAR(255)
-    );
+-- Create Application table
+CREATE TABLE application (
+     app_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+     employee_id BIGINT,
+     job_pos_id BIGINT,
+     status VARCHAR(255),
+     verified_by_manager BOOLEAN,
+     FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
+     FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
+);
 
-CREATE TABLE IF NOT EXISTS CodingLanguage (
-                                              id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                              name VARCHAR(255)
-    );
-
-CREATE TABLE IF NOT EXISTS Application (
-                                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                           status ENUM('APPLIED', 'UNDER_REVIEW', 'ACCEPTED', 'REJECTED'),
-    applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    applicant_id BIGINT,
-    job_posting_id BIGINT,
-    FOREIGN KEY (applicant_id) REFERENCES Employee(id),
-    FOREIGN KEY (job_posting_id) REFERENCES JobPosting(id)
-    );
-
-CREATE TABLE IF NOT EXISTS Verification (
-                                            id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                            manager_id BIGINT,
-                                            hr_id BIGINT,
-                                            application_id BIGINT,
-                                            verification_timestamp_manager TIMESTAMP,
-                                            verification_timestamp_hr TIMESTAMP,
-                                            FOREIGN KEY (manager_id) REFERENCES Employee(id),
-    FOREIGN KEY (hr_id) REFERENCES Hr(id),
-    FOREIGN KEY (application_id) REFERENCES Application(id)
-    );
-
-CREATE TABLE IF NOT EXISTS job_posting_skill (
-                                                 job_posting_id BIGINT,
-                                                 skill_id BIGINT,
-                                                 PRIMARY KEY (job_posting_id, skill_id),
-    FOREIGN KEY (job_posting_id) REFERENCES JobPosting(id),
-    FOREIGN KEY (skill_id) REFERENCES Skill(id)
-    );
-
-CREATE TABLE IF NOT EXISTS job_posting_language (
-                                                    job_posting_id BIGINT,
-                                                    language_id BIGINT,
-                                                    PRIMARY KEY (job_posting_id, language_id),
-    FOREIGN KEY (job_posting_id) REFERENCES JobPosting(id),
-    FOREIGN KEY (language_id) REFERENCES CodingLanguage(id)
-    );
+-- Create Location Junction table
+CREATE TABLE location_junction (
+       location_id BIGINT,
+       job_pos_id BIGINT,
+       PRIMARY KEY (location_id, job_pos_id),
+       FOREIGN KEY (location_id) REFERENCES location(location_id),
+       FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
+);
