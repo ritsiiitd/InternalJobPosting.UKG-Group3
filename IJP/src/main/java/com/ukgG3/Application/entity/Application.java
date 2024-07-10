@@ -28,6 +28,7 @@ public class Application {
     private Long job_pos_id;
 
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private ApplicationStatus status;
 

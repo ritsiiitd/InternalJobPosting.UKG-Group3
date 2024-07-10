@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -21,6 +23,31 @@ public class ApplicationServiceImpl implements IApplicationService {
         Application application= ApplicationMapper.mapToApplication(applicationDto,new Application());
 //        application.setAppliedAt(LocalDateTime.now());
         applicationRepository.save(application);
+    }
+
+    @Override
+    public List<ApplicationDto> getAllApplications() {
+        return applicationRepository.findAll().stream()
+                .map(application -> {
+                    return ApplicationMapper.mapToApplicationDto(application,new ApplicationDto());
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public ApplicationDto getApplicationById(Long id) {
+        return applicationRepository.findById(id)
+                .map(
+                        application -> {
+                            return ApplicationMapper.mapToApplicationDto(application,new ApplicationDto());
+                        }
+                )
+                .orElse(null);
+    }
+
+    @Override
+    public void deleteApplication(Long id) {
+        applicationRepository.deleteById(id);
     }
 
 }
