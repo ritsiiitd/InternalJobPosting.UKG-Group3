@@ -5,7 +5,7 @@ spring:
     name: "accounts"
   devtools:
     livereload:
-      enabled: true
+      enabl ed: true
     restart:
       enabled: true
   datasource:
