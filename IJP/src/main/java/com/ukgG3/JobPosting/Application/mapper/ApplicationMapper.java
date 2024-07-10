@@ -1,6 +1,5 @@
 package com.ukgG3.JobPosting.Application.mapper;
 
-
 import com.ukgG3.JobPosting.Application.dto.ApplicationDTO;
 import com.ukgG3.JobPosting.Application.entity.Application;
 
