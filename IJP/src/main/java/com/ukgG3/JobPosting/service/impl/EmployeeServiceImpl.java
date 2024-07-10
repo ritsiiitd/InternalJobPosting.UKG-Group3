@@ -40,6 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public boolean saveEmployee(EmployeeDto employeeDTO) {
         Employee employee = EmployeeMapper.mapToEmployee(employeeDTO,new Employee());
+        employeeRepository.save(employee);
         return true;
     }
 

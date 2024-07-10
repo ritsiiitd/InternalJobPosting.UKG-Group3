@@ -10,7 +10,7 @@ public class EmployeeMapper {
         employeeDto.setLast_name(employee.getLastName());
         employeeDto.setEmail(employee.getEmail());
         employeeDto.setDob(employee.getDob());
-        employeeDto.setRole(String.valueOf(employee.getRole()));
+        employeeDto.setRole(String.valueOf(employee.getERole()));
         return employeeDto;
     }
 
@@ -19,7 +19,7 @@ public class EmployeeMapper {
         employee.setLastName(employeeDto.getLast_name());
         employee.setEmail(employeeDto.getEmail());
         employee.setDob(employeeDto.getDob());
-        employee.setRole(Employee.Role.valueOf(String.valueOf(employeeDto.getRole())));
+        employee.setERole(Employee.Role.valueOf(String.valueOf(employeeDto.getRole())));
         return employee;
     }
 }

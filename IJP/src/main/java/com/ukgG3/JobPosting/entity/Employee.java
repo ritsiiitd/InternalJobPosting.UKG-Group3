@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -33,11 +33,11 @@ public class Employee {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role eRole;
 
-    @ManyToOne
-    @JoinColumn(name = "reports_to")
-    private Employee reportsTo;
+//    @ManyToOne
+//    @JoinColumn(name = "reports_to")
+    private String reportsTo;
 
 
 }
