@@ -1,9 +1,8 @@
-##spring.application.name=IJP
-IJPserver:
-  port:8080
+server:
+  port: 8081
 spring:
   application:
-    name:"accounts"
+    name: "JobPosting"
   devtools:
     livereload:
       enabled: true
@@ -19,14 +18,6 @@ spring:
   h2:
     console:
       enabled: true
-
-#spring.datasource.url=jdbc:mysql://localhost:3306/ijp_db
-#spring.datasource.username=root
-#spring.datasource.password=password
-#spring.jpa.hibernate.ddl-auto=update
-#spring.jpa.show-sql=true
-#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
-#
-#  # JWT Settings
-#jwt.secret=mysecretkey
-#jwt.expiration=3600
+  sql:
+    init:
+      mode: always

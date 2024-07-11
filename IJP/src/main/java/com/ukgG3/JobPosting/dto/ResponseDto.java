@@ -1,4 +1,4 @@
-package com.ukgG3.IJP.Dto;
+package com.ukgG3.JobPosting.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +9,6 @@ import org.springframework.http.HttpStatus;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseDto {
-    private HttpStatus statusCode;
+    private String statusCode;
     private String responseMessage;
 }
