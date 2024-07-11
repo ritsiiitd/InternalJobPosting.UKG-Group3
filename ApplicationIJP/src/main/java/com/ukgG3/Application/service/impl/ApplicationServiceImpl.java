@@ -58,7 +58,15 @@ public class ApplicationServiceImpl implements IApplicationService {
         applicationRepository.save(application);
     }
 
+    @Override
+    public void verifyApplicationByManagerRejected(Long id) {
+        Application application = applicationRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Application", "id", id.toString()));
+        application.setVerifiedByManager(false);
+        application.setStatus("REJECTED");
+        applicationRepository.save(application);
 
+    }
 
 
 }

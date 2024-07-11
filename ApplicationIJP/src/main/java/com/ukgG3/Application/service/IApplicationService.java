@@ -12,5 +12,6 @@ public interface IApplicationService  {
     ApplicationDto getApplicationById(Long id);
     void deleteApplication(Long id);
     void verifyApplicationByManagerAccepted(Long id);
+    void verifyApplicationByManagerRejected(Long id);
 
 }

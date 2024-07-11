@@ -36,6 +36,8 @@ public class ApplicationController {
         return iApplicationService.getApplicationById(id);
     }
 
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteApplication(@PathVariable Long id) {
         iApplicationService.deleteApplication(id);
@@ -45,7 +47,12 @@ public class ApplicationController {
     @PutMapping("/{id}/verifyByManager")
     public ResponseEntity<ResponseDto> verifyApplicationByManager(@PathVariable Long id) {
         iApplicationService.verifyApplicationByManagerAccepted(id);
-        return ResponseEntity.ok(new ResponseDto("200", "Application verified by manager successfully"));
+        return ResponseEntity.ok(new ResponseDto("200", "Application accepted verified by manager successfully"));
+    }
+    @PutMapping("/{id}/verifyByManagerRejected")
+    public ResponseEntity<ResponseDto> verifyApplicationByManagerRejected(@PathVariable Long id) {
+        iApplicationService.verifyApplicationByManagerAccepted(id);
+        return ResponseEntity.ok(new ResponseDto("200", "Application rejection verified by manager successfully"));
     }
 
     @GetMapping("/hello")
