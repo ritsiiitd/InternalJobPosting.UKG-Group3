@@ -25,13 +25,20 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String first_name;
-    private String last_name;
+    private Long employeeId;
+    private String firstName;
+    private String lastName;
     private LocalDate dob;
     private String email;
     private String password;
-    private  Role role;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @ManyToOne
+    @JoinColumn(name = "reports_to")
+    private Employee reportsTo;
+
 
 }
 

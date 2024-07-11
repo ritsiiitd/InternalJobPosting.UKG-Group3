@@ -7,16 +7,10 @@ import java.time.LocalDate;
 
 @Getter @Setter
 public class EmployeeDto {
-    public enum Role {
-        MANAGER,
-        HR,
-        EMPLOYEE
-    }
-
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
     private LocalDate dob;
-    private Role role;
+    private String role;
 }
