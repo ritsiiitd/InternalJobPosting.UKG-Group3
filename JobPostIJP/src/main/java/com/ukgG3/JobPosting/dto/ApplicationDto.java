@@ -1,4 +1,4 @@
-package com.ukgG3.Application.Dto;
+package com.ukgG3.JobPosting.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
