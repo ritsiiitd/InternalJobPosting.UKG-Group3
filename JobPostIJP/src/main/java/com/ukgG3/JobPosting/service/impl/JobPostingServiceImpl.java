@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,4 +51,18 @@ public class JobPostingServiceImpl implements IJobPostingService {
             jobPostingRepository.deleteById(id);
         }
     }
+
+    @Override
+    public boolean updateIsActive(Long id, Boolean isActive) {
+        Optional<JobPosting> jobPostingOptional = jobPostingRepository.findById(id);
+        if (jobPostingOptional.isPresent()) {
+            JobPosting jobPosting = jobPostingOptional.get();
+            jobPosting.setIsActive(false);
+            jobPostingRepository.save(jobPosting);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

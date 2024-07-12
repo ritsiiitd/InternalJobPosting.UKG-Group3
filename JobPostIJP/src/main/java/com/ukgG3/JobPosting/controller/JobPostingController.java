@@ -45,20 +45,20 @@ public class JobPostingController {
         }
     }
 
-//    @PutMapping()
-//    public ResponseEntity<JobPostingDto> updateJobPosting(@PathVariable Long id, @RequestBody JobPostingDto jobPostingDTO) {
-//        jobPostingDTO.setJobPosId(id); // Assuming JobPostingDto has a setId method to set the ID
-//        boolean isUpdated = jobPostingService.saveJobPosting(jobPostingDTO);
-//        if (isUpdated) {
-//            return ResponseEntity.status(HttpStatus.OK).body(jobPostingDTO);
-//        } else {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
-//    }
 
     @DeleteMapping("/deleteJob")
     public ResponseEntity<Void> deleteJobPosting(@RequestParam Long id) {
         jobPostingService.deleteJobPosting(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/closeJobPosting")
+    public ResponseEntity<ResponseDto> updateIsActive(@RequestParam Long id) {
+        boolean isUpdated = jobPostingService.updateIsActive(id, false);
+        if (isUpdated) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto("200", "Job Posting status updated successfully"));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDto("404", "Job Posting not found"));
+        }
     }
 }

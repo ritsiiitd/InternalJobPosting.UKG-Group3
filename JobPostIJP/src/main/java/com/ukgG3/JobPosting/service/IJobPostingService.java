@@ -9,4 +9,6 @@ public interface IJobPostingService {
     JobPostingDto getJobPostingById(Long id);
     boolean saveJobPosting(JobPostingDto jobPostingDTO);
     void deleteJobPosting(Long id);
+
+    boolean updateIsActive(Long id, Boolean isActive);
 }
