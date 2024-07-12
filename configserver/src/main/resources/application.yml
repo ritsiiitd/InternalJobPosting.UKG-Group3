@@ -9,7 +9,7 @@ spring:
     config:
       server:
         git:
-          uri: "https://github.com/synergy2411/synergy-config.git"
+          uri: "https://github.com/ritsiiitd/IJPconfigServer.git"
           default-label: main
           timeout: 5
           clone-on-start: true
