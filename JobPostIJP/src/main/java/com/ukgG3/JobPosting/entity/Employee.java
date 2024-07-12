@@ -35,7 +35,7 @@ public class Employee {
 
 //    @ManyToOne
 //    @JoinColumn(name = "reports_to")
-    private int reportsTo;
+    private Integer reportsTo;
 
 
 }

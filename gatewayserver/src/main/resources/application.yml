@@ -1,11 +1,14 @@
 spring:
   application:
     name: "gatewayserver"
-
   config:
-    import: "optional:configserver:http://localhost:8071/"
-    cloud:
-
+    import : "optional:configserver:http://localhost:8071/"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
 management:
   endpoints:
     web:
@@ -20,5 +23,5 @@ management:
 info:
   app:
     name: "Gateway Server"
-    description: "Gateway Server for IJP"
+    description: "Gateway Server for IJP Portal"
     version: "1.0.0"
