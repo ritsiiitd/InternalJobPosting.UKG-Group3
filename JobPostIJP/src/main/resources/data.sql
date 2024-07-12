@@ -15,3 +15,19 @@ INSERT INTO employee (first_name, last_name, dob, email, password, e_role, repor
    ('Mia', 'White', '1996-04-14', 'mia.white@example.com', 'password13', 'EMPLOYEE', 9),
    ('Noah', 'Harris', '1983-03-03', 'noah.harris@example.com', 'password14', 'EMPLOYEE', 9),
    ('Olivia', 'Martin', '1997-07-22', 'olivia.martin@example.com', 'password15', 'EMPLOYEE', 9);
+
+
+-- -- Insert demo data into Location table
+-- -- Insert demo data into CodingLanguage table
+INSERT INTO coding_language (lang_name, skill_level) VALUES
+('Java', 'Intermediate'),
+('Python', 'Beginner'),
+('C#', 'Advanced'),
+('JavaScript', 'Intermediate');
+--
+-- -- -- Insert demo data into Location table
+INSERT INTO location (name) VALUES
+('New York'),
+('San Francisco'),
+('Berlin'),
+('Tokyo');

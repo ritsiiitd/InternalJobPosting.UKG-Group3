@@ -1,6 +1,8 @@
 package com.ukgG3.JobPosting.mapper;
 
+import com.ukgG3.JobPosting.JobPosting;
 import com.ukgG3.JobPosting.dto.EmployeeDto;
+import com.ukgG3.JobPosting.dto.JobPostingDto;
 import com.ukgG3.JobPosting.entity.Employee;
 
 public class EmployeeMapper {
@@ -24,4 +26,5 @@ public class EmployeeMapper {
         employee.setERole(employeeDto.getRole());
         return employee;
     }
+
 }
