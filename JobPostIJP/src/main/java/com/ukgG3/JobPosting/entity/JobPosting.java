@@ -32,7 +32,6 @@ public class JobPosting {
     private Long createdBy;
     private LocalDate deadline;
 
-
     @ManyToMany
     @JoinTable(
             name = "job_posting_location",
@@ -45,6 +44,8 @@ public class JobPosting {
     @JoinTable(
             name = "job_posting_coding_language",
             joinColumns = @JoinColumn(name = "job_posting_id"),
-            inverseJoinColumns = @JoinColumn(name = "coding_language_id")
+            inverseJoinColumns = @JoinColumn(name = "language_id")
     )
-    private Set<CodingLanguage> codingLanguages;}
+    private Set<CodingLanguage> codingLanguages;
+
+}
