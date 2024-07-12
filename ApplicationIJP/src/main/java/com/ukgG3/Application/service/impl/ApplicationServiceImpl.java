@@ -2,6 +2,7 @@ package com.ukgG3.Application.service.impl;
 
 import com.ukgG3.Application.Dto.ApplicationDto;
 import com.ukgG3.Application.entity.Application;
+import com.ukgG3.Application.entity.ApplicationStatus;
 import com.ukgG3.Application.exception.ResourceNotFoundException;
 import com.ukgG3.Application.mapper.ApplicationMapper;
 import com.ukgG3.Application.repository.ApplicationRepository;
@@ -39,7 +40,9 @@ public class ApplicationServiceImpl implements IApplicationService {
         return applicationRepository.findById(id)
                 .map(
                         application -> {
-                            return ApplicationMapper.mapToApplicationDto(application,new ApplicationDto());
+                            ApplicationDto applicationDto = ApplicationMapper.mapToApplicationDto(application,new ApplicationDto());
+                            applicationDto.setApp_id(application.getApplicationId());
+                            return applicationDto;
                         }
                 )
                 .orElse(null);
@@ -67,6 +70,4 @@ public class ApplicationServiceImpl implements IApplicationService {
         applicationRepository.save(application);
 
     }
-
-
 }
