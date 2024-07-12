@@ -1,10 +1,24 @@
 package com.ukgG3.JobPosting.entity;
 
+import com.ukgG3.JobPosting.converter.StringtoIntegerConverter;
+import com.ukgG3.JobPosting.dto.CodingLanguageDto;
+import com.ukgG3.JobPosting.dto.LocationDto;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class JobPosting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,23 +32,20 @@ public class JobPosting {
     private Long createdBy;
     private LocalDate deadline;
 
-    @ManyToOne
-    @JoinColumn(name = "location_id")
-    private com.ukgG3.JobPosting.entity.Location location;
-
-    @OneToMany
+    @ManyToMany
     @JoinTable(
-            name = "location_junction",
-            joinColumns = @JoinColumn(name = "jobPosId"),
+            name = "job_posting_location",
+            joinColumns = @JoinColumn(name = "job_posting_id"),
             inverseJoinColumns = @JoinColumn(name = "location_id")
     )
     private Set<Location> locations;
 
-    @OneToMany
+    @ManyToMany
     @JoinTable(
-            name = "coding_language",
-            joinColumns = @JoinColumn(name = "jobPosId"),
+            name = "job_posting_coding_language",
+            joinColumns = @JoinColumn(name = "job_posting_id"),
             inverseJoinColumns = @JoinColumn(name = "language_id")
     )
     private Set<CodingLanguage> codingLanguages;
+
 }

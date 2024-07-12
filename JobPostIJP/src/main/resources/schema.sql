@@ -15,7 +15,8 @@ DROP TABLE IF EXISTS job_posting CASCADE;
 DROP TABLE IF EXISTS application CASCADE;
 DROP TABLE IF EXISTS location CASCADE;
 DROP TABLE IF EXISTS coding_language CASCADE;
-DROP TABLE IF EXISTS location_junction CASCADE;
+DROP TABLE IF EXISTS job_posting_location CASCADE;
+DROP TABLE IF EXISTS job_posting_coding_language CASCADE;
 
 -- Create Employee table
 CREATE TABLE employee (
@@ -46,24 +47,37 @@ CREATE TABLE job_posting (
                              is_active BOOLEAN,
                              designation VARCHAR(255),
                              created_by INT,
-                             location_id INT,
-                             skill_id INT,
-                             language_id INT,
                              deadline DATE,
-                             FOREIGN KEY (created_by) REFERENCES employee(employee_id),
-                             FOREIGN KEY (location_id) REFERENCES location(location_id)
+                             FOREIGN KEY (created_by) REFERENCES employee(employee_id)
 );
 
 -- Create Coding Language table
 CREATE TABLE coding_language (
                                  language_id INT AUTO_INCREMENT PRIMARY KEY,
-                                 job_pos_id INT,
                                  lang_name VARCHAR(255),
-                                 skill_level VARCHAR(255),
-                                 FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
+                                 skill_level VARCHAR(255)
 );
 
+
 -- Create Application table
+
+-- Create Location Junction table
+CREATE TABLE job_posting_location (
+                                      job_posting_id INT,
+                                      location_id INT,
+                                      PRIMARY KEY (job_posting_id, location_id),
+                                      FOREIGN KEY (job_posting_id) REFERENCES job_posting(job_pos_id),
+                                      FOREIGN KEY (location_id) REFERENCES location(location_id)
+);
+
+-- Create Coding Language Junction table
+CREATE TABLE job_posting_coding_language (
+                                             job_posting_id INT,
+                                             language_id INT,
+                                             PRIMARY KEY (job_posting_id, language_id),
+                                             FOREIGN KEY (job_posting_id) REFERENCES job_posting(job_pos_id),
+                                             FOREIGN KEY (language_id) REFERENCES coding_language(language_id)
+);
 CREATE TABLE application (
                              app_id INT AUTO_INCREMENT PRIMARY KEY,
                              employee_id INT,
@@ -73,13 +87,4 @@ CREATE TABLE application (
                              verified_by_manager BOOLEAN,
                              FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
                              FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
-);
-
--- Create Location Junction table
-CREATE TABLE location_junction (
-                                   location_id INT,
-                                   job_pos_id INT,
-                                   PRIMARY KEY (location_id, job_pos_id),
-                                   FOREIGN KEY (location_id) REFERENCES location(location_id),
-                                   FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
 );

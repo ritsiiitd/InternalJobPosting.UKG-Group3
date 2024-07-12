@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: "gatewayserver"
+
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+    cloud:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: "Gateway Server"
+    description: "Gateway Server for IJP"
+    version: "1.0.0"

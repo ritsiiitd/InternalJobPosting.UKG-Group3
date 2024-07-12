@@ -31,24 +31,6 @@ public class IJPcontroller {
         return ResponseEntity.status(HttpStatus.OK).body(employeeService.getEmployeeById(id));
     }
 
-//    @PostMapping("/addEmployee")
-//    public ResponseEntity<ResponseDto> createEmployee(@RequestBody EmployeeDto employeeDTO) {
-//        employeeService.saveEmployee(employeeDTO);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("201", "Created Successfully"));
-//    }
-
-//    @PutMapping("/{id}")
-//    public EmployeeDto updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
-//        employeeDTO.se(id);
-//        return employeeService.saveEmployee(employeeDTO);
-//    }
-
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
-//        employeeService.deleteEmployee(id);
-//        return ResponseEntity.noContent().build();
-//    }
-
     @GetMapping("/hello")
     public ResponseEntity<String> helloWorld(){
         return ResponseEntity.status(HttpStatus.OK).body("Hello World This is Employees service!");
