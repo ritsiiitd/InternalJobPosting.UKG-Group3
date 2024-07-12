@@ -18,7 +18,7 @@ import java.util.List;
 public class ApplicationController {
     private final IApplicationService iApplicationService;
 
-    @GetMapping
+    @GetMapping("/getAllApplications")
     public List<ApplicationDto> getAllApplications() {
         return iApplicationService.getAllApplications();
     }
