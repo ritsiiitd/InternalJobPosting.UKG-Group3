@@ -15,5 +15,4 @@ public class ApplicationDto {
     private boolean verified_by_manager; // Maybe not in entity but needed for DTO
     private String status;
 
-
 }
