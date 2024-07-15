@@ -16,10 +16,14 @@ public class SecurityConfiguration {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity httpSecurity) {
         httpSecurity.authorizeExchange(exchange -> exchange
-                .pathMatchers(HttpMethod.GET).permitAll()
-                .pathMatchers("/jobposting/api/jobPostings/**").authenticated()
-                .pathMatchers("/application/api/applications/**").authenticated()
-                .pathMatchers("/jobposting/api/employees/**").authenticated()
+//                .pathMatchers(HttpMethod.GET).permitAll()
+                .pathMatchers(HttpMethod.GET, "/application/api/applications/{id}").hasRole("EMPLOYEE")
+                .pathMatchers(HttpMethod.GET,"jobposting/api/jobPostings/getAll").hasRole("EMPLOYEE")
+                .pathMatchers("/application/api/applications/**").hasRole("HR")
+                .pathMatchers("/jobposting/api/jobPostings/**").hasRole("HR")
+                        .pathMatchers(HttpMethod.GET,"/jobposting/api/jobPostings/**").hasRole("MANGER")
+                        .pathMatchers(HttpMethod.GET, "/application/api/applications/getAllApplications").hasRole("Manager")
+
         ).oauth2ResourceServer(config -> config.jwt(Customizer.withDefaults()));
 
         httpSecurity.csrf(ServerHttpSecurity.CsrfSpec::disable);
