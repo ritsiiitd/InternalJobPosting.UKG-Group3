@@ -16,49 +16,54 @@ import java.util.List;
 @AllArgsConstructor
 public class GetApplicationController {
     private final ApplicationFeignClientImpl applicationFeignClientImpl;
-//    @GetMapping("/getApplications")
-//        public ResponseEntity<String> getApplications(){
-//            return ResponseEntity.status(HttpStatus.OK).body("Applications");
-//    }
 
-    @GetMapping("/applications")
+    @GetMapping("/jobpost/applications/{id}")
+    public ResponseEntity<ApplicationDto> getApplicationById(@PathVariable Long id) {
+        ApplicationDto applicationDto = applicationFeignClientImpl.getApplicationById(id);
+
+        System.out.println(id);
+        return ResponseEntity.ok(applicationDto);
+    }
+
+    @GetMapping("/jobpost/getApplications")
+        public ResponseEntity<String> getApplications(){
+            return ResponseEntity.status(HttpStatus.OK).body("Applications");
+    }
+
+    @GetMapping("/jobpost/getAllApplications")
     public List<ApplicationDto> getAllApplications() {
         return applicationFeignClientImpl.getAllApplications();
     }
 
-    @PostMapping("/createapplications")
+    @PostMapping("/jobpost/createapplications")
     public ResponseEntity<ResponseDto> createApplication(@RequestBody ApplicationDto applicationDto) {
         ResponseDto responseDto = applicationFeignClientImpl.createApplication(applicationDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
-    @GetMapping("/applications/{id}")
-    public ResponseEntity<ApplicationDto> getApplicationById(@PathVariable Long id) {
-        ApplicationDto applicationDto = applicationFeignClientImpl.getApplicationById(id);
-        return ResponseEntity.ok(applicationDto);
-    }
+//    @GetMapping("/jobpost/applications/{id}")
+//    public ResponseEntity<ApplicationDto> getApplicationById(@PathVariable Long id) {
+//        ApplicationDto applicationDto = applicationFeignClientImpl.getApplicationById(id);
+//        return ResponseEntity.ok(applicationDto);
+//    }
 
-    @DeleteMapping("/applications/{id}")
+    @DeleteMapping("/jobpost/deleteApplications/{id}")
     public ResponseEntity<Void> deleteApplication(@PathVariable Long id) {
         applicationFeignClientImpl.deleteApplication(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/applications/{id}/verifyByManager")
+    @PutMapping("/jobpost/applications/{id}/verifyByManager")
     public ResponseEntity<ResponseDto> verifyApplicationByManager(@PathVariable Long id) {
         ResponseDto responseDto = applicationFeignClientImpl.verifyApplicationByManager(id);
         return ResponseEntity.ok(responseDto);
     }
 
-    @PutMapping("/applications/{id}/verifyByManagerRejected")
+    @PutMapping("/jobpost/applications/{id}/verifyByManagerRejected")
     public ResponseEntity<ResponseDto> verifyApplicationByManagerRejected(@PathVariable Long id) {
         ResponseDto responseDto = applicationFeignClientImpl.verifyApplicationByManagerRejected(id);
         return ResponseEntity.ok(responseDto);
     }
 
-    @GetMapping("/applications/hello")
-    public ResponseEntity<String> helloWorld() {
-        String message = applicationFeignClientImpl.helloWorld();
-        return ResponseEntity.ok(message);
-    }
+
 }

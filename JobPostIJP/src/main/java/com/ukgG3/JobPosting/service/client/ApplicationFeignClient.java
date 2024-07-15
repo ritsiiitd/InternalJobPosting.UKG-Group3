@@ -11,7 +11,7 @@ import java.util.List;
 //@FeignClient(name = "applicationijp", url = "http://localhost:8081") // Replace with the actual URL of your ApplicationIJP service
 @FeignClient(name = "application")
 public interface ApplicationFeignClient {
-    @GetMapping("/api/applications")
+   @GetMapping("/api/applications/getAllApplications")
     List<ApplicationDto> getAllApplications();
 
     @PostMapping("/api/applications/createApplication")
@@ -20,7 +20,7 @@ public interface ApplicationFeignClient {
     @GetMapping("/api/applications/{id}")
     ApplicationDto getApplicationById(@PathVariable("id") Long id);
 
-    @DeleteMapping("/api/applications/{id}")
+    @DeleteMapping("/api/deleteApplications/{id}")
     void deleteApplication(@PathVariable("id") Long id);
 
     @PutMapping("/api/applications/{id}/verifyByManager")
@@ -29,6 +29,8 @@ public interface ApplicationFeignClient {
     @PutMapping("/api/applications/{id}/verifyByManagerRejected")
     ResponseDto verifyApplicationByManagerRejected(@PathVariable("id") Long id);
 
-    @GetMapping("/api/applications/hello")
-    String helloWorld();
+//    @GetMapping("/api/getAllApplications")
+//    List<ApplicationDto> getAllApplications() ;
+//    @GetMapping("/api/applications/hello")
+//    String helloWorld();
 }
