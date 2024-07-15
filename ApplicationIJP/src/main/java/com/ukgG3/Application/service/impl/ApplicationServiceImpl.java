@@ -37,6 +37,7 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public ApplicationDto getApplicationById(Long id) {
+        System.out.println("3rd");
         return applicationRepository.findById(id)
                 .map(
                         application -> {
