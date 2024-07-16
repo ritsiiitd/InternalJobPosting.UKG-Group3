@@ -48,10 +48,8 @@ INSERT INTO job_posting (description, min_exp, min_sal, max_sal, is_active, desi
 --
 --
 INSERT INTO application (employee_id, job_pos_id, status, verified_by_manager) VALUES
-(3, 1, 'pending', FALSE),
-(4, 2, 'pending', FALSE),
-(5, 3, 'pending',  FALSE),
-(6, 4, 'pending', FALSE),
-(7, 5, 'pending',  FALSE);
-
-
+(3, 1, 'APPLIED',  FALSE),
+(4, 2, 'APPLIED',  FALSE),
+(5, 3, 'APPLIED',  FALSE),
+(6, 4, 'APPLIED',  FALSE),
+(7, 5, 'APPLIED',  FALSE);
