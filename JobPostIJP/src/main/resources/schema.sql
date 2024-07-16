@@ -88,3 +88,4 @@ CREATE TABLE application (
                              FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
                              FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
 );
+
