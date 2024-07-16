@@ -11,6 +11,7 @@ public class ApplicationMapper {
         applicationDto.setJob_pos_id(application.getJobPosId());
         applicationDto.setVerified_by_manager(application.isVerifiedByManager());
         applicationDto.setStatus(application.getStatus());
+        applicationDto.setApp_id(application.getApplicationId());
         return applicationDto;
     }
 
@@ -19,6 +20,7 @@ public class ApplicationMapper {
         application.setJobPosId(applicationDto.getJob_pos_id());
         application.setVerifiedByManager(applicationDto.isVerified_by_manager());
         application.setStatus(applicationDto.getStatus());
+        application.setApplicationId(applicationDto.getApp_id());
         return application;
     }
 }

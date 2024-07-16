@@ -1,6 +1,7 @@
 package com.ukgG3.Application.service.impl;
 
 import com.ukgG3.Application.Dto.ApplicationDto;
+import com.ukgG3.Application.Dto.ApplicationMessageDto;
 import com.ukgG3.Application.entity.Application;
 import com.ukgG3.Application.entity.ApplicationStatus;
 import com.ukgG3.Application.exception.ResourceNotFoundException;
@@ -19,11 +20,21 @@ import java.util.stream.Collectors;
 public class ApplicationServiceImpl implements IApplicationService {
     private final ApplicationRepository applicationRepository;
 
+//    private final StreamBridge streamBridge;
+
     @Override
     public void createApplication(ApplicationDto applicationDto) {
         Application application= ApplicationMapper.mapToApplication(applicationDto,new Application());
 //        application.setAppliedAt(LocalDateTime.now());
-        applicationRepository.save(application);
+        Application savedApplication =  applicationRepository.save(application);
+
+        sendCommunication(savedApplication);
+    }
+
+    private void sendCommunication(Application savedApplication) {
+        ApplicationMessageDto applicationMessageDto = new ApplicationMessageDto("testEmail@test.com", "Application created with id: " + savedApplication.getApplicationId());
+//        boolean isSent = streamBridge.send("sendCommunication-out-0", applicationMessageDto);
+//        logger
     }
 
     @Override

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HrDashboardComponent } from './hr-dashboard.component';
+import { NavbarComponent } from './navbar.component';
 
-describe('HrDashboardComponent', () => {
-  let component: HrDashboardComponent;
-  let fixture: ComponentFixture<HrDashboardComponent>;
+describe('NavbarComponent', () => {
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HrDashboardComponent]
+      imports: [NavbarComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(HrDashboardComponent);
+
+    fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
