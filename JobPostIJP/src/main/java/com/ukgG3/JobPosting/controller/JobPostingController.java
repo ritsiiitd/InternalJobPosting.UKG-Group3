@@ -19,6 +19,7 @@ public class JobPostingController {
     @Autowired
     private final IJobPostingService jobPostingService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getAllJobs")
     public ResponseEntity<List<JobPostingDto>> getAllJobPostings() {
         List<JobPostingDto> jobPostings = jobPostingService.getAllJobPostings();
