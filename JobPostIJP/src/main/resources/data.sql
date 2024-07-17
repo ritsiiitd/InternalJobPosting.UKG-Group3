@@ -34,14 +34,15 @@ INSERT INTO location (name) VALUES
 
 
 
+
 INSERT INTO job_posting (description, min_exp, min_sal, max_sal, is_active, designation, created_by, deadline) VALUES
-                                                                                                                   ('Software Developer for Web Applications', 2, 50000, 70000, TRUE, 'Software Developer', 2, '2024-12-31'),
-                                                                                                                   ('Senior Data Analyst', 5, 60000, 90000, TRUE, 'Data Analyst', 2, '2024-11-15'),
-                                                                                                                   ('HR Manager', 3, 55000, 80000, TRUE, 'HR Manager', 2, '2024-10-20'),
-                                                                                                                   ('Junior Software Developer', 1, 40000, 60000, TRUE, 'Software Developer', 2, '2024-12-10'),
-                                                                                                                   ('Marketing Specialist', 4, 45000, 70000, TRUE, 'Marketing Specialist', 2, '2024-09-30'),
-                                                                                                                   ('Project Manager', 6, 70000, 100000, TRUE, 'Project Manager', 2, '2024-08-25'),
-                                                                                                                   ('System Administrator', 2, 50000, 75000, TRUE, 'System Administrator', 2, '2024-11-05'),
-                                                                                                                   ('UI/UX Designer', 3, 55000, 85000, TRUE, 'UI/UX Designer', 2, '2024-10-15'),
-                                                                                                                   ('DevOps Engineer', 4, 60000, 90000, TRUE, 'DevOps Engineer', 2, '2024-12-01'),
-                                                                                                                   ('Technical Support Specialist', 1, 35000, 50000, TRUE, 'Technical Support', 2, '2024-09-20');
+('Software Developer for Web Applications', 2, 50000, 70000, TRUE, 'Software Developer', 2, '2024-12-31'),
+('Senior Data Analyst', 5, 60000, 90000, TRUE, 'Data Analyst', 2, '2024-11-15'),
+('HR Manager', 3, 55000, 80000, TRUE, 'HR Manager', 2, '2024-10-20'),
+('Junior Software Developer', 1, 40000, 60000, TRUE, 'Software Developer', 2, '2024-12-10'),
+('Marketing Specialist', 4, 45000, 70000, TRUE, 'Marketing Specialist', 2, '2024-09-30'),
+('Project Manager', 6, 70000, 100000, TRUE, 'Project Manager', 2, '2024-08-25'),
+('System Administrator', 2, 50000, 75000, TRUE, 'System Administrator', 2, '2024-11-05'),
+('UI/UX Designer', 3, 55000, 85000, TRUE, 'UI/UX Designer', 2, '2024-10-15'),
+('DevOps Engineer', 4, 60000, 90000, TRUE, 'DevOps Engineer', 2, '2024-12-01'),
+('Technical Support Specialist', 1, 35000, 50000, TRUE, 'Technical Support', 2, '2024-09-20');

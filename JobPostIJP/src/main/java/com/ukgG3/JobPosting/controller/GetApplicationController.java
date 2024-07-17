@@ -1,6 +1,7 @@
 package com.ukgG3.JobPosting.controller;
 
 
+import com.ukgG3.JobPosting.dto.ApplicationDetailsDto;
 import com.ukgG3.JobPosting.dto.ApplicationDto;
 import com.ukgG3.JobPosting.dto.ResponseDto;
 import com.ukgG3.JobPosting.service.impl.ApplicationFeignClientImpl;
@@ -32,7 +33,26 @@ public class GetApplicationController {
 
     @GetMapping("/jobpost/getAllApplications")
     public List<ApplicationDto> getAllApplications() {
+
+
+
         return applicationFeignClientImpl.getAllApplications();
+    }
+
+
+    @GetMapping("/jobpost/getAllApplicationsDetailsManager/{mgId}")
+    public List<ApplicationDetailsDto> getAllApplicationsDetailsManager(@PathVariable Long mgId) {
+        List<ApplicationDetailsDto> applicationDetailsDto=applicationFeignClientImpl.getAllApplicationsDetailsManager(mgId);
+        return applicationDetailsDto;
+
+
+    }
+    @GetMapping("/jobpost/getAllApplicationsDetails/")
+    public List<ApplicationDetailsDto> getAllApplicationsDetails() {
+        List<ApplicationDetailsDto> applicationDetailsDto=applicationFeignClientImpl.getAllApplicationsDetails();
+        return applicationDetailsDto;
+
+
     }
 
     @PostMapping("/jobpost/createapplications")

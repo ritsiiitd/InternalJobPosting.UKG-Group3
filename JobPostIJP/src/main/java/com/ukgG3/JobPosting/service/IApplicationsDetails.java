@@ -1,5 +1,6 @@
 package com.ukgG3.JobPosting.service;
 
+import com.ukgG3.JobPosting.dto.ApplicationDetailsDto;
 import com.ukgG3.JobPosting.dto.ApplicationDto;
 import com.ukgG3.JobPosting.dto.ResponseDto;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ public interface IApplicationsDetails {
     void deleteApplication(Long id);
     ResponseDto verifyApplicationByManager(Long id);
     ResponseDto verifyApplicationByManagerRejected(Long id);
-
+    List<ApplicationDetailsDto> getAllApplicationsDetails();
+    List<ApplicationDetailsDto> getAllApplicationsDetailsManager(Long mgId);
 
 }
