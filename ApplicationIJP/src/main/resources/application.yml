@@ -32,13 +32,13 @@ spring:
         sendCommunication-out-0:
           destination: send-communication
 
-  rabbitmq:
-    host: localhost
-    port: 5672
-
-    username: guest
-    password: guest
-    connection-timeout: 10s
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#
+#    username: guest
+#    password: guest
+#    connection-timeout: 10s
 
 
 
@@ -67,6 +67,6 @@ eureka:
 
 info:
   app:
-    name: "JOB POSTING Microservice"
+    name: "Application Microservice"
     description: "Job Posting MS Microservice for Synergy bank"
     version: "1.0.0"

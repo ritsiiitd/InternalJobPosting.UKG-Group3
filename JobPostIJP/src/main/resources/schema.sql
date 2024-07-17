@@ -55,7 +55,7 @@ CREATE TABLE job_posting (
 CREATE TABLE coding_language (
                                  language_id INT AUTO_INCREMENT PRIMARY KEY,
                                  lang_name VARCHAR(255),
-                                 skill_level VARCHAR(255)
+                                 skill VARCHAR(255)
 );
 
 
@@ -88,4 +88,3 @@ CREATE TABLE application (
                              FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
                              FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
 );
-

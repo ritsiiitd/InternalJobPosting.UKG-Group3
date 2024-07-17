@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Job } from '../models/job.model';
-import { JobService, Location, CodingLanguage } from '../services/job.service';
+import { Job,LanguageGroup,CodingLanguage } from '../models/job.model';
+import { JobService, Location } from '../services/job.service';
 @Component({
   selector: 'app-job-form',
   standalone: true,
@@ -45,32 +45,33 @@ import { JobService, Location, CodingLanguage } from '../services/job.service';
         </div>
 
         <div>
-            <label class="block text-sm font-medium text-gray-700">Locations</label>
-            <div class="mt-2 space-y-2">
-              <div *ngFor="let location of locations" class="flex items-center">
-                <input type="checkbox" 
-                       [id]="'location-' + location.id" 
-                       [value]="location.id" 
-                       (change)="onLocationChange(location.id, $event)"
-                       class="mr-2">
-                <label [for]="'location-' + location.id">{{ location.name }}</label>
-              </div>
+        <label>Locations</label>
+        <div *ngFor="let location of locations">
+          <input type="checkbox" 
+                 [value]="location.id" 
+                 >
+          {{ location.name }}
+        </div>
+      </div>
+
+      <div>
+        <label>Coding Languages</label>
+        <div *ngFor="let langGroup of languageGroups">
+          <input type="checkbox" 
+                 [id]="'lang-' + langGroup.langName"
+                 >
+          {{ langGroup.langName }}
+          <div *ngIf="isLanguageChecked(langGroup)">
+            <div *ngFor="let skill of langGroup.skills">
+              <input type="radio" 
+                     [name]="'skill-' + langGroup.langName"
+                     [value]="skill.id" 
+                     >
+              {{ skill.skill }}
             </div>
           </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Coding Languages</label>
-            <div class="mt-2 space-y-2">
-              <div *ngFor="let lang of codingLanguages" class="flex items-center">
-                <input type="checkbox" 
-                       [id]="'lang-' + lang.id" 
-                       [value]="lang.id" 
-                       (change)="onCodingLanguageChange(lang.id, $event)"
-                       class="mr-2">
-                <label [for]="'lang-' + lang.id">{{ lang.name }}</label>
-              </div>
-            </div>
-          </div>
+        </div>
+      </div>
 
         <div>
           <button type="submit" [disabled]="!jobForm.form.valid"
@@ -98,28 +99,63 @@ export class JobFormComponent implements OnInit {
     };
   
     locations: Location[] = [];
-    codingLanguages: CodingLanguage[] = [];
+    languageGroups: LanguageGroup[] = [];
+    checkedLanguages: Set<string> = new Set();
   
     constructor(private router: Router, private jobService: JobService) {}
   
     ngOnInit() {
       this.jobService.getLocations().subscribe(locations => this.locations = locations);
-      this.jobService.getCodingLanguages().subscribe(languages => this.codingLanguages = languages);
+      this.jobService.getCodingLanguages().subscribe(languages => {
+        this.groupLanguages(languages);
+      });
     }
   
-    onLocationChange(locationId: number, event: any) {
+    groupLanguages(languages: CodingLanguage[]) {
+      const groups: { [key: string]: CodingLanguage[] } = {};
+      languages.forEach(lang => {
+        if (!groups[lang.langName]) {
+          groups[lang.langName] = [];
+        }
+        groups[lang.langName].push(lang);
+      });
+      this.languageGroups = Object.keys(groups).map(langName => ({
+        langName,
+        skills: groups[langName]
+      }));
+    }
+  
+    // onLocationChange(locationId: number, event: any) {
+    //   if (event.target.checked) {
+    //     this.job.locations.push(locationId);
+    //   } else {
+    //     this.job.locations = this.job.locations.filter(id => id !== locationId);
+    //   }
+    // }
+  
+    onLanguageChecked(langGroup: LanguageGroup, event: any) {
       if (event.target.checked) {
-        this.job.locations.push(locationId);
+        this.checkedLanguages.add(langGroup.langName);
       } else {
-        this.job.locations = this.job.locations.filter(id => id !== locationId);
+        this.checkedLanguages.delete(langGroup.langName);
+        this.job.codingLanguages = this.job.codingLanguages.filter(
+          id => !langGroup.skills.some(skill => skill.id === id)
+        );
       }
     }
   
-    onCodingLanguageChange(langId: number, event: any) {
-      if (event.target.checked) {
-        this.job.codingLanguages.push(langId);
-      } else {
-        this.job.codingLanguages = this.job.codingLanguages.filter(id => id !== langId);
+    isLanguageChecked(langGroup: LanguageGroup): boolean {
+      return this.checkedLanguages.has(langGroup.langName);
+    }
+  
+    onSkillSelected(languageId: number) {
+      this.job.codingLanguages = this.job.codingLanguages.filter(
+        id => !this.languageGroups.some(group => 
+          group.skills.some(skill => skill.id === id && skill.id !== languageId)
+        )
+      );
+      if (!this.job.codingLanguages.includes(languageId)) {
+        this.job.codingLanguages.push(languageId);
       }
     }
   
@@ -131,7 +167,6 @@ export class JobFormComponent implements OnInit {
         },
         error => {
           console.error('Error creating job', error);
-          // Handle error (e.g., show error message to user)
         }
       );
     }

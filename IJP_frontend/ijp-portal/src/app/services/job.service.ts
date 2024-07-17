@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Job } from '../models/job.model';
+import { CodingLanguage, Job } from '../models/job.model';
 
 
 export interface Location {
@@ -9,10 +9,6 @@ export interface Location {
     name: string;
 }
 
-export interface CodingLanguage {
-    id: number;
-    name: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -36,16 +32,6 @@ export class JobService {
   getJobs(): Observable<Job[]> {
     return this.jobsSubject.asObservable();
   }
-
-//   addJob(job: Omit<Job, 'jobPosId'>): void {
-//     this.http.post<Job>(`${this.apiUrl}/createJob`, job).subscribe(
-//       newJob => {
-//         const currentJobs = this.jobsSubject.value;
-//         this.jobsSubject.next([newJob, ...currentJobs]);
-//       },
-//       error => console.error('Error adding job:', error)
-//     );
-//   }
 
   toggleJobStatus(id: number): void {
     this.http.put<Job>(`${this.apiUrl}/toggleJobStatus/${id}`, {}).subscribe(
@@ -71,16 +57,16 @@ export class JobService {
     );
   }
 
-  addJob(job: Omit<Job, 'jobPosId'>): Observable<any> {
-    return this.http.post(`${this.apiUrl}/addJob`, job);
+  addJob(job: Job): Observable<Job> {
+    return this.http.post<Job>(`${this.apiUrl}/addJob`, job);
   }
 
   getLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>(`${this.apiUrl}/locations`);
+    return this.http.get<Location[]>(`${this.apiUrl}/getAllLocations`);
   }
 
   getCodingLanguages(): Observable<CodingLanguage[]> {
-    return this.http.get<CodingLanguage[]>(`${this.apiUrl}/codingLanguages`);
+    return this.http.get<CodingLanguage[]>(`${this.apiUrl}/getAllCodingLanguages`);
   }
 
 

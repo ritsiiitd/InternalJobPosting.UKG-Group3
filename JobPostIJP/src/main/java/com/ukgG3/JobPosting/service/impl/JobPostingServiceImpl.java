@@ -1,9 +1,13 @@
 package com.ukgG3.JobPosting.service.impl;
 
 // JobPostingServiceImpl.jav
+import com.ukgG3.JobPosting.dto.CodingLanguageDto;
+import com.ukgG3.JobPosting.dto.LocationDto;
 import com.ukgG3.JobPosting.entity.JobPosting;
 import com.ukgG3.JobPosting.dto.JobPostingDto;
+import com.ukgG3.JobPosting.mapper.CodingLanguageMapper;
 import com.ukgG3.JobPosting.mapper.JobPostingMapper;
+import com.ukgG3.JobPosting.mapper.LocationMapper;
 import com.ukgG3.JobPosting.repository.CodingLanguageRepository;
 import com.ukgG3.JobPosting.repository.JobPostingRepository;
 import com.ukgG3.JobPosting.repository.LocationRepository;
@@ -23,6 +27,34 @@ public class JobPostingServiceImpl implements IJobPostingService {
     private LocationRepository locationRepository;
     @Autowired
     private CodingLanguageRepository codingLanguageRepository;
+
+
+
+    @Override
+    public List<LocationDto> getAllLocations() {
+        return locationRepository.findAll().stream()
+                .map(locations ->
+                {
+                    LocationDto locationDto=LocationMapper.mapToLocationDto(locations, new LocationDto());
+                    locationDto.setLocationId(locations.getLocationId());
+                    return locationDto;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CodingLanguageDto> getAllCodingLang() {
+        return codingLanguageRepository.findAll().stream()
+                .map(codingLanguage ->
+                {
+                    CodingLanguageDto codingLanguageDto=CodingLanguageMapper.mapToCodingLanguageDto(codingLanguage, new CodingLanguageDto());
+                    codingLanguageDto.setLanguageId(codingLanguage.getLanguageId());
+                    return codingLanguageDto;
+
+                })
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     public List<JobPostingDto> getAllJobPostings() {

@@ -3,9 +3,12 @@ package com.ukgG3.JobPosting.service.impl;
 // EmployeeServiceImpl.java
 
 import com.ukgG3.JobPosting.dto.EmployeeDto;
+import com.ukgG3.JobPosting.dto.LocationDto;
 import com.ukgG3.JobPosting.entity.Employee;
 import com.ukgG3.JobPosting.mapper.EmployeeMapper;
+import com.ukgG3.JobPosting.mapper.LocationMapper;
 import com.ukgG3.JobPosting.repository.EmployeeRepository;
+import com.ukgG3.JobPosting.repository.LocationRepository;
 import com.ukgG3.JobPosting.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,8 @@ import java.util.stream.Collectors;
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private LocationRepository locationRepository;
 
     @Override
     public List<EmployeeDto> getAllEmployees() {
@@ -48,4 +53,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
     }
+
+
 }

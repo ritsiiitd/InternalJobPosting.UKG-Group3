@@ -17,13 +17,13 @@ import { JobService } from '../services/job.service';
       </div>
       <div>
         <button 
-          (click)="onToggleStatus()"
+          
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
         >
           {{ job.isActive ? 'Close Job' : 'Reopen Job' }}
         </button>
         <button 
-          (click)="onDeleteJob()"
+        
           class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
         >
           Delete Job
@@ -38,11 +38,5 @@ export class JobRowComponent {
 
   constructor(private jobService: JobService) {}
 
-  onToggleStatus() {
-    this.jobService.toggleJobStatus(this.job.jobPosId);
-  }
 
-  onDeleteJob() {
-    this.jobService.deleteJob(this.job.jobPosId);
-  }
 }

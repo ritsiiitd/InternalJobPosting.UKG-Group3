@@ -5,13 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// CodingLanguageSkillDto.java
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 
-public class CodingLanguageDto {
+public class CodingLanguageSkillDto {
     private Long languageId;
-    private String langName;
+    private String skillLevel;
 }
-

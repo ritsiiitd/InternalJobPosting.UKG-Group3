@@ -19,8 +19,10 @@ INSERT INTO employee (first_name, last_name, dob, email, password, e_role, repor
 
 -- -- Insert demo data into Location table
 -- -- Insert demo data into CodingLanguage table
-INSERT INTO coding_language (lang_name, skill_level) VALUES
+INSERT INTO coding_language (lang_name, skill) VALUES
+('Java', 'Beginner'),
 ('Java', 'Intermediate'),
+('Java', 'Advanced'),
 ('Python', 'Beginner'),
 ('C#', 'Advanced'),
 ('JavaScript', 'Intermediate');
