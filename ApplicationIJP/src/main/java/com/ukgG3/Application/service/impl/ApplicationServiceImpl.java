@@ -26,6 +26,7 @@ public class ApplicationServiceImpl implements IApplicationService {
     public void createApplication(ApplicationDto applicationDto) {
         Application application= ApplicationMapper.mapToApplication(applicationDto,new Application());
 //        application.setAppliedAt(LocalDateTime.now());
+        application.setStatus("pending");
         Application savedApplication =  applicationRepository.save(application);
 
         sendCommunication(savedApplication);
@@ -81,5 +82,14 @@ public class ApplicationServiceImpl implements IApplicationService {
         application.setStatus("REJECTED");
         applicationRepository.save(application);
 
+    }
+
+    @Override
+    public List<ApplicationDto> getApplicationsByEmployeeId(Long employee_id) {
+        return applicationRepository.findByEmployeeId(employee_id).stream()
+                .map(application -> {
+                    return ApplicationMapper.mapToApplicationDto(application,new ApplicationDto());
+                })
+                .collect(Collectors.toList());
     }
 }

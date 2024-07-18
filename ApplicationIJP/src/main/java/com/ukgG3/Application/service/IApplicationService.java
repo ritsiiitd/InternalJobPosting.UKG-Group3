@@ -14,4 +14,6 @@ public interface IApplicationService  {
     void verifyApplicationByManagerAccepted(Long id);
     void verifyApplicationByManagerRejected(Long id);
 
+    List<ApplicationDto> getApplicationsByEmployeeId(Long employee_id);
+
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CodingLanguage, Job } from '../models/job.model';
 import { map, tap } from 'rxjs/operators';
+import { ApplicationDto, EmployeeDto } from './application.service';
 
 export interface Location {
     locationId: number;
@@ -87,7 +88,7 @@ export class JobService {
     console.log("Getting job: ", job);
     return job;
   }
-
+ 
   getLocations(): Observable<Location[]> {
     const locations = this.http.get<Location[]>(`${this.apiUrl}/getAllLocations`)
     console.log("Service locations: ", locations.forEach(location => console.log(location)));
@@ -140,5 +141,17 @@ export class JobService {
         })
       );
   }
+
+  getApplicationsByJobId(jobId: number): Observable<ApplicationDto[]> {
+    return this.http.get<ApplicationDto[]>(`${this.apiUrl}/applications/job/${jobId}`);
+  }
+
+  getEmployeeById(employeeId: number): Observable<EmployeeDto> {
+    return this.http.get<EmployeeDto>(`${this.apiUrl}/employees/${employeeId}`);
+  }
+
+  // getJobById(jobId: number): Observable<Job> {
+  //   return this.http.get<Job>(`${this.apiUrl}/jobs/${jobId}`);
+  // }
 
 }

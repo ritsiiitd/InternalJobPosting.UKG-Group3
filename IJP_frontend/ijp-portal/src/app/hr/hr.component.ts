@@ -13,6 +13,7 @@ import { JobService } from '../services/job.service';
   template: `
     <div class="container mx-auto px-4">
       <h2 class="text-2xl font-bold mb-4">HR Dashboard</h2>
+      
       <div class="mb-4 flex justify-between items-center">
         <button 
           (click)="navigateToNewJobForm()"

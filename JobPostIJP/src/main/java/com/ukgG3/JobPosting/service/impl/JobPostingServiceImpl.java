@@ -2,10 +2,12 @@ package com.ukgG3.JobPosting.service.impl;
 
 // JobPostingServiceImpl.jav
 import com.ukgG3.JobPosting.dto.CodingLanguageDto;
+import com.ukgG3.JobPosting.dto.JobPostingGetAllDto;
 import com.ukgG3.JobPosting.dto.LocationDto;
 import com.ukgG3.JobPosting.entity.JobPosting;
 import com.ukgG3.JobPosting.dto.JobPostingDto;
 import com.ukgG3.JobPosting.mapper.CodingLanguageMapper;
+import com.ukgG3.JobPosting.mapper.JobPostingGetAllMapper;
 import com.ukgG3.JobPosting.mapper.JobPostingMapper;
 import com.ukgG3.JobPosting.mapper.LocationMapper;
 import com.ukgG3.JobPosting.repository.CodingLanguageRepository;
@@ -70,6 +72,14 @@ public class JobPostingServiceImpl implements IJobPostingService {
         })
                 .orElse(null);
 
+    }
+
+
+    @Override
+    public List<JobPostingGetAllDto> getAllJobPostingsAll() {
+        return jobPostingRepository.findAllWithLocationsAndCodingLanguages().stream()
+                .map(JobPostingGetAllMapper::mapToJobPostingGetAllDto)
+                .collect(Collectors.toList());
     }
 
 

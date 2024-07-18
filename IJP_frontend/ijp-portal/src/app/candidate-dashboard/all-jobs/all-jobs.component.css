@@ -1,0 +1,31 @@
+/* src/app/candidate-dashboard/all-jobs/all-jobs.component.css */
+/* .job-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .job-card h3 {
+    margin-top: 0;
+  }
+  
+  .job-card button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .job-card button:hover {
+    background-color: #0056b3;
+  }
+   */
+
+
+   .card:nth-child(even) {
+    background-color: #f8f9fa;
+  }

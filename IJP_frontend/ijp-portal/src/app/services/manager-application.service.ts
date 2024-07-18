@@ -7,10 +7,10 @@ import { ApplicationDetails } from '../models/Application.model';
   providedIn: 'root'
 })
 export class ManagerApplicationService {
-  private apiUrl = 'http://localhost:8072/api/jobpost';
+  private apiUrl = 'http://localhost:8082/api/jobpost';
   // Update with your actual API URL
-    private apiUrlVerify='http://localhost:8072/api/jobpost/applications/';
-    private apiUrlVerifyRejected='http://localhost:8072/api/jobpost/applications/';
+    private apiUrlVerify='http://localhost:8082/api/jobpost/applications/';
+    private apiUrlVerifyRejected='http://localhost:8082/api/jobpost/applications/';
   constructor(private http: HttpClient) {}
  
   getAllApplicationsDetailsManager(mgId: number): Observable<ApplicationDetails[]> {

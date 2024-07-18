@@ -1,6 +1,6 @@
 // job-details.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../services/job.service';
 import { Job, CodingLanguage } from '../models/job.model';
@@ -14,6 +14,9 @@ import { forkJoin } from 'rxjs';
   template: `
     <div class="container mx-auto px-4 py-8" *ngIf="job">
       <h2 class="text-2xl font-bold mb-4">{{ job.designation }}</h2>
+      <button (click)="viewApplications()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          View Applications
+        </button>
       <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
           <h3 class="text-lg leading-6 font-medium text-gray-900">Job Details</h3>
@@ -74,8 +77,15 @@ export class JobDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private jobService: JobService
   ) {}
+
+  viewApplications() {
+    if (this.job) {
+      this.router.navigate(['/job', this.job.jobPosId, 'applications']);
+    }
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/jobPostings")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class JobPostingController {
     private static final Logger log = LoggerFactory.getLogger(JobPostingController.class);
     @Autowired
@@ -126,6 +127,13 @@ public class JobPostingController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    //for location and coding language
+    @GetMapping("/getAllJobsString")
+    public ResponseEntity<List<JobPostingGetAllDto>> getAllJobPostingsAll() {
+        List<JobPostingGetAllDto> jobPostings = jobPostingService.getAllJobPostingsAll();
+        return ResponseEntity.status(HttpStatus.OK).body(jobPostings);
     }
 
 }

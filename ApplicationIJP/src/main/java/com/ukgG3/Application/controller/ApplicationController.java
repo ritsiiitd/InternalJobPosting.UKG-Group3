@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api/applications")
 @AllArgsConstructor
 @Validated
+@CrossOrigin(origins = "http://localhost:4200")
 public class ApplicationController {
     private final IApplicationService iApplicationService;
 
@@ -51,8 +52,13 @@ public class ApplicationController {
     }
     @PutMapping("/{id}/verifyByManagerRejected")
     public ResponseEntity<ResponseDto> verifyApplicationByManagerRejected(@PathVariable Long id) {
-        iApplicationService.verifyApplicationByManagerAccepted(id);
+        iApplicationService.verifyApplicationByManagerRejected(id);
         return ResponseEntity.ok(new ResponseDto("200", "Application rejection verified by manager successfully"));
+    }
+
+    @GetMapping("/byEmployee/{employee_id}")
+    public List<ApplicationDto> getApplicationsByEmployeeId(@PathVariable Long employee_id) {
+        return iApplicationService.getApplicationsByEmployeeId(employee_id);
     }
 
     @GetMapping("/hello")
