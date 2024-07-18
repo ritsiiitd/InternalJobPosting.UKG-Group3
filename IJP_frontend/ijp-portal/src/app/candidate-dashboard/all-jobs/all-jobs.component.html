@@ -82,7 +82,7 @@
               <button 
               [ngClass]="appliedJobs.has(job.jobPosId) ? 'btn btn-secondary' : 'btn btn-primary'" 
               (click)="applyForJob(job.jobPosId)" 
-              [disabled]="appliedJobs.has(job.jobPosId)">
+              [disabled]="isJobApplied(job.jobPosId)">
               {{ appliedJobs.has(job.jobPosId) ? 'Applied' : 'Apply' }}
             </button>
             </div>
