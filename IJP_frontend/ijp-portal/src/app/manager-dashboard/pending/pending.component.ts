@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { ManagerApplicationService } from '../../services/manager-application.service';
 import { ApplicationDetails } from '../../models/Application.model';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-pending',
   standalone: true,
@@ -24,15 +25,20 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class PendingComponent implements OnInit {
   pendingApplications: ApplicationDetails[] = [];
+  
  
-  constructor(private managerApplicationService: ManagerApplicationService) {}
+  constructor(private managerApplicationService: ManagerApplicationService
+    ,
+    private authService: AuthService
+  ) {}
  
   ngOnInit(): void {
     this.loadPendingApplications();
   }
  
   loadPendingApplications(): void {
-    this.managerApplicationService.getAllApplicationsDetailsManager(1) // Update with the actual manager ID
+    const employeeId = this.authService.getCurrentEmployeeId();
+    this.managerApplicationService.getAllApplicationsDetailsManager(employeeId!) // Update with the actual manager ID
       .subscribe({
         next: (applications: ApplicationDetails[]) => {
           this.pendingApplications = applications.filter(app => app.status === 'pending');

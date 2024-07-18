@@ -22,18 +22,6 @@ export class MyJobsComponent implements OnInit{
     this.loadMyApplications();
   }
 
-  // loadApplication(): void {
-  //   this.applicationService.getApplicationsByEmployeeId(this.employeeId).subscribe({
-  //     next: (application: Application) => {
-  //       // Do something with the single application
-  //       console.log('Fetched application:', application);
-  //     },
-  //     error: (err) => {
-  //       console.error('Error fetching application:', err);
-  //       this.error = 'Failed to load application details. Please try again later.';
-  //     }
-  //   });
-  // }
 
   loadMyApplications(): void {
     this.applicationService.getApplicationsByEmployeeId(this.employeeId).subscribe({

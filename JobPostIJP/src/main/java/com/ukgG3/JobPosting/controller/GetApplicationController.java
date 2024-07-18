@@ -56,6 +56,7 @@ public class GetApplicationController {
 
     }
 
+
     @PostMapping("/jobpost/createapplications")
     public ResponseEntity<ResponseDto> createApplication(@RequestBody ApplicationDto applicationDto) {
         ResponseDto responseDto = applicationFeignClientImpl.createApplication(applicationDto);

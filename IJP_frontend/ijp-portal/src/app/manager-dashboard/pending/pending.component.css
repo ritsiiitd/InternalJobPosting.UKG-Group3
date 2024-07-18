@@ -87,3 +87,14 @@ div {
     font-style: italic;
     font-size: 16px;
   }
+
+  div[_ngcontent-ng-c2651684533][_ngcontent-ng-c2651684533] {
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }

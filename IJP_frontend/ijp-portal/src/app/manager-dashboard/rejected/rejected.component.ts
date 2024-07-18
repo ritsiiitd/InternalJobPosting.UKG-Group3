@@ -29,6 +29,7 @@ import { ManagerApplicationService } from '../../services/manager-application.se
 import { ApplicationDetails } from '../../models/Application.model';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-rejected-application',
   templateUrl: './rejected.component.html',
@@ -39,15 +40,19 @@ import { CommonModule } from '@angular/common';
 export class RejectedApplicationComponent implements OnInit {
   rejectedApplications: ApplicationDetails[] = [];
  
-  constructor(private managerApplicationService: ManagerApplicationService) {}
+  constructor(private managerApplicationService: ManagerApplicationService,
+    private authService: AuthService
+  ) {}
   
   ngOnInit(): void {
     this.loadRejectedApplications();
   }
  
   loadRejectedApplications(): void {
-    const managerId = 1; // Replace with dynamic value if necessary
-    this.managerApplicationService.getAllApplicationsDetailsManager(managerId).subscribe({
+    // const managerId = ; // Replace with dynamic value if necessary
+    const employeeId = this.authService.getCurrentEmployeeId();
+
+    this.managerApplicationService.getAllApplicationsDetailsManager(employeeId!).subscribe({
       next: (applications: ApplicationDetails[]) => {
         this.rejectedApplications = applications.filter(app => app.status === 'REJECTED');
       },

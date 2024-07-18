@@ -2,19 +2,19 @@
 INSERT INTO employee (first_name, last_name, dob, email, password, e_role, reports_to) VALUES
    ('Alice', 'Smith', '1985-04-23', 'alice.smith@example.com', 'password1', 'MANAGER', NULL),
    ('Bob', 'Johnson', '1987-07-15', 'bob.johnson@example.com', 'password2', 'HR', NULL),
+   ('Ivy', 'Taylor', '1986-05-25', 'ivy.taylor@example.com', 'password9', 'MANAGER', NULL),
    ('Carol', 'Williams', '1990-02-01', 'carol.williams@example.com', 'password3', 'EMPLOYEE', 1),
    ('Dave', 'Brown', '1992-11-30', 'dave.brown@example.com', 'password4', 'EMPLOYEE', 1),
    ('Eve', 'Davis', '1988-08-24', 'eve.davis@example.com', 'password5', 'EMPLOYEE', 1),
-   ('Frank', 'Miller', '1993-06-03', 'frank.miller@example.com', 'password6', 'EMPLOYEE', 1),
-   ('Grace', 'Wilson', '1989-03-17', 'grace.wilson@example.com', 'password7', 'EMPLOYEE', 1),
-   ('Hank', 'Moore', '1991-12-12', 'hank.moore@example.com', 'password8', 'EMPLOYEE', 1),
-   ('Ivy', 'Taylor', '1986-05-25', 'ivy.taylor@example.com', 'password9', 'MANAGER', NULL),
-   ('Jake', 'Anderson', '1994-10-09', 'jake.anderson@example.com', 'password10', 'EMPLOYEE', 9),
-   ('Kara', 'Thomas', '1995-01-19', 'kara.thomas@example.com', 'password11', 'EMPLOYEE', 9),
-   ('Liam', 'Jackson', '1984-09-29', 'liam.jackson@example.com', 'password12', 'EMPLOYEE', 9),
-   ('Mia', 'White', '1996-04-14', 'mia.white@example.com', 'password13', 'EMPLOYEE', 9),
-   ('Noah', 'Harris', '1983-03-03', 'noah.harris@example.com', 'password14', 'EMPLOYEE', 9),
-   ('Olivia', 'Martin', '1997-07-22', 'olivia.martin@example.com', 'password15', 'EMPLOYEE', 9);
+   ('Frank', 'Miller', '1993-06-03', 'frank.miller@example.com', 'password6', 'EMPLOYEE', 3),
+   ('Grace', 'Wilson', '1989-03-17', 'grace.wilson@example.com', 'password7', 'EMPLOYEE', 3),
+   ('Hank', 'Moore', '1991-12-12', 'hank.moore@example.com', 'password8', 'EMPLOYEE', 3),
+   ('Jake', 'Anderson', '1994-10-09', 'jake.anderson@example.com', 'password10', 'EMPLOYEE', 3),
+   ('Kara', 'Thomas', '1995-01-19', 'kara.thomas@example.com', 'password11', 'EMPLOYEE', 3),
+   ('Liam', 'Jackson', '1984-09-29', 'liam.jackson@example.com', 'password12', 'EMPLOYEE', 3),
+   ('Mia', 'White', '1996-04-14', 'mia.white@example.com', 'password13', 'EMPLOYEE', 3),
+   ('Noah', 'Harris', '1983-03-03', 'noah.harris@example.com', 'password14', 'EMPLOYEE', 3),
+   ('Olivia', 'Martin', '1997-07-22', 'olivia.martin@example.com', 'password15', 'EMPLOYEE', 3);
 
 
 -- -- Insert demo data into Location table
@@ -48,3 +48,30 @@ INSERT INTO job_posting (description, min_exp, min_sal, max_sal, is_active, desi
 ('UI/UX Designer', 3, 55000, 85000, TRUE, 'UI/UX Designer', 2, '2024-10-15'),
 ('DevOps Engineer', 4, 60000, 90000, TRUE, 'DevOps Engineer', 2, '2024-12-01'),
 ('Technical Support Specialist', 1, 35000, 50000, TRUE, 'Technical Support', 2, '2024-09-20');
+
+-- Insert data into job_posting_location junction table
+INSERT INTO job_posting_location (job_posting_id, location_id) VALUES
+                                                                   (1, 1),  -- Software Developer for Web Applications in New York
+                                                                   (1, 2),  -- Software Developer for Web Applications in San Francisco
+                                                                   (2, 3),  -- Senior Data Analyst in Berlin
+                                                                   (3, 4),  -- HR Manager in Tokyo
+                                                                   (4, 1),  -- Junior Software Developer in New York
+                                                                   (5, 2),  -- Marketing Specialist in San Francisco
+                                                                   (6, 3),  -- Project Manager in Berlin
+                                                                   (7, 4),  -- System Administrator in Tokyo
+                                                                   (8, 1),  -- UI/UX Designer in New York
+                                                                   (9, 2),  -- DevOps Engineer in San Francisco
+                                                                   (10, 3); -- Technical Support Specialist in Berlin
+-- Insert data into job_posting_coding_language junction table
+INSERT INTO job_posting_coding_language (job_posting_id, language_id) VALUES
+                                                                          (1, 1),  -- Software Developer for Web Applications requires Java
+                                                                          (1, 2),  -- Software Developer for Web Applications requires Python
+                                                                          (2, 3),  -- Senior Data Analyst requires C#
+                                                                          (3, 4),  -- HR Manager requires JavaScript
+                                                                          (4, 1),  -- Junior Software Developer requires Java
+                                                                          (5, 2),  -- Marketing Specialist requires Python
+                                                                          (6, 3),  -- Project Manager requires C#
+                                                                          (7, 4),  -- System Administrator requires JavaScript
+                                                                          (8, 1),  -- UI/UX Designer requires Java
+                                                                          (9, 2),  -- DevOps Engineer requires Python
+                                                                          (10, 3); -- Technical Support Specialist requires C#

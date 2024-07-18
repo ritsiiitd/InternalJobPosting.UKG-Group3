@@ -14,7 +14,7 @@ export class JobPostingService {
   constructor(private http: HttpClient) {}
  
   getAllJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(`${this.apiUrl}jobPostings/getAllJobs`);
+    return this.http.get<Job[]>(`${this.apiUrl}jobPostings/getAllJobsString`);
   }
   createApplication(application: Application): Observable<Application> {
     return this.http.post<Application>(`${this.apiUrl}jobpost/createapplications`, application);

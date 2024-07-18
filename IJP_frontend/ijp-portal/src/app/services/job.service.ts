@@ -21,7 +21,7 @@ interface ResponseDto {
 })
 
 export class JobService {
-  private apiUrl = 'http://localhost:8072/api/jobPostings'; // Gateway URL
+  private apiUrl = 'http://localhost:8082/api/jobPostings'; // Gateway URL
   private jobsSubject = new BehaviorSubject<Job[]>([]);
 
   constructor(private http: HttpClient) {

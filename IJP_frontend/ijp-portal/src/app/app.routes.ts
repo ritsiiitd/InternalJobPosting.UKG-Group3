@@ -13,28 +13,92 @@ import { CandidateDashboardComponent } from './candidate-dashboard/candidate-das
 import { AllJobsComponent } from './candidate-dashboard/all-jobs/all-jobs.component';
 import { MyJobsComponent } from './candidate-dashboard/my-jobs/my-jobs.component';
 
+import { LoginComponent } from './login/login.component';
+
+import { AuthGuard } from './services/auth.guard';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 export const routes: Routes = [
-  { path: 'hr', component: HrComponent },
-  { path: 'hr/new-job', component: JobFormComponent },
-  { path: 'hr/job', component: JobDetailsComponent },
 
-  { path: 'job/:id/applications', component: JobApplicationsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { 
+    path: 'hr', 
+    component: HrComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['HR'] }
+  },
+  { 
+    path: 'hr/new-job', 
+    component: JobFormComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['HR'] }
+  },
+  { 
+    path: 'hr/job', 
+    component: JobFormComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['HR'] }
+  },
+  
 
-  { path: 'candidate-dashboard', component: CandidateDashboardComponent, children:[
+  { path: 'job/:id/applications', component: JobApplicationsComponent,canActivate: [AuthGuard],
+    data: { roles: ['HR'] } },
+
+  { path: 'candidate-dashboard', canActivate: [AuthGuard],
+    data: { roles: ['EMPLOYEE'] }, component: CandidateDashboardComponent, children:[
       {path: 'all-jobs', component: AllJobsComponent},
       {path: 'my-jobs', component: MyJobsComponent},
       { path: '', redirectTo: 'all-jobs', pathMatch: 'full' }
   ]}, 
 
-  { path: '', redirectTo: '/hr', pathMatch: 'full' },
-  { path: 'manager-dashboard', component: ManagerDashboardComponent, children: [
-    { path: 'pending', component: PendingComponent },
-    { path: 'accepted', component: AcceptedApplicationComponent },
-    { path: 'rejected', component: RejectedApplicationComponent },
-    { path: '', redirectTo: 'pending', pathMatch: 'full' }
-]}
+
+  { 
+    path: 'manager-dashboard', 
+    component: ManagerDashboardComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['MANAGER'] },
+    children: [
+      { path: 'pending', component: PendingComponent },
+      { path: 'accepted', component: AcceptedApplicationComponent },
+      { path: 'rejected', component: RejectedApplicationComponent },
+      { path: '', redirectTo: 'pending', pathMatch: 'full' }
+    ]
+  },
+  { path: 'unauthorized', component: UnauthorizedComponent },
+  { path: '**', redirectTo: '/unauthorized' }
 ];
 
 
+
+// export const routes: Routes = [
+//   { path: 'login', component: LoginComponent },
+//   { path: '', redirectTo: '/login', pathMatch: 'full' },
+//   { 
+//     path: 'hr', 
+//     component: HrComponent, 
+//     canActivate: [AuthGuard],
+//     data: { roles: ['HR'] }
+//   },
+//   { 
+//     path: 'hr/new-job', 
+//     component: JobFormComponent, 
+//     canActivate: [AuthGuard],
+//     data: { roles: ['HR'] }
+//   },
+//   { 
+//     path: 'manager-dashboard', 
+//     component: ManagerDashboardComponent, 
+//     canActivate: [AuthGuard],
+//     data: { roles: ['MANAGER'] },
+//     children: [
+//       { path: 'pending', component: PendingComponent },
+//       { path: 'accepted', component: AcceptedApplicationComponent },
+//       { path: 'rejected', component: RejectedApplicationComponent },
+//       { path: '', redirectTo: 'pending', pathMatch: 'full' }
+//     ]
+//   },
+//   { path: 'unauthorized', component: UnauthorizedComponent },
+//   { path: '**', redirectTo: '/unauthorized' }
+// ];
  
