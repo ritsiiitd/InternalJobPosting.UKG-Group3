@@ -166,7 +166,7 @@ export class JobFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Submitting job:', this.job);  // Add this line for debugging
+    console.log('Submitting job:', JSON.stringify(this.job));
     this.jobService.addJob(this.job).subscribe(
       response => {
         console.log('Job created successfully', response);

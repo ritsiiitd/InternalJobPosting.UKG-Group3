@@ -5,6 +5,7 @@ import com.ukgG3.JobPosting.dto.*;
 import com.ukgG3.JobPosting.entity.CodingLanguage;
 import com.ukgG3.JobPosting.entity.Location;
 import com.ukgG3.JobPosting.mapper.EmployeeMapper;
+import com.ukgG3.JobPosting.mapper.JobPostingMapper;
 import com.ukgG3.JobPosting.mapper.LocationMapper;
 import com.ukgG3.JobPosting.service.IJobPostingService;
 import lombok.AllArgsConstructor;
@@ -44,7 +45,7 @@ public class JobPostingController {
 
 //    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/addJob")
-    public ResponseEntity<ResponseDto> createJobPosting(@RequestBody JobPostingDto jobPostingDTO) {
+    public ResponseEntity<JobPostingDto> createJobPosting(@RequestBody JobPostingDto jobPostingDTO) {
         System.out.println("Request made here");
         System.out.println(jobPostingDTO.getCreatedBy());
         System.out.println(jobPostingDTO.getJobPosId());//null ari hai
@@ -56,11 +57,11 @@ public class JobPostingController {
         System.out.println(jobPostingDTO.getCodingLanguages());
         System.out.println(jobPostingDTO.getIsActive());
         System.out.println(jobPostingDTO.getMaxSal());
-        boolean isSaved = jobPostingService.saveJobPosting(jobPostingDTO);
-        if (isSaved) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("201", "Job Posting Created Successfully"));
+        JobPostingDto isSaved = jobPostingService.saveJobPosting(jobPostingDTO);
+        if (isSaved != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(isSaved);
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseDto("400", "Failed to Create Job Posting"));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(jobPostingDTO);
         }
     }
 

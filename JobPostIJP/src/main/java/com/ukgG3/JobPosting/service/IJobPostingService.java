@@ -9,7 +9,7 @@ import java.util.List;
 public interface IJobPostingService {
     List<JobPostingDto> getAllJobPostings();
     JobPostingDto getJobPostingById(Long id);
-    boolean saveJobPosting(JobPostingDto jobPostingDTO);
+    JobPostingDto saveJobPosting(JobPostingDto jobPostingDTO);
     void deleteJobPosting(Long id);
     List<LocationDto> getAllLocations();
     List<CodingLanguageDto> getAllCodingLang();

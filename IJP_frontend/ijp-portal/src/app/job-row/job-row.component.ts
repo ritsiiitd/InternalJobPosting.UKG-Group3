@@ -2,13 +2,14 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Job } from '../models/job.model';
 import { JobService } from '../services/job.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-row',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="bg-white shadow-md rounded-lg p-6 mb-4 flex justify-between items-center">
+    <div class="bg-white shadow-md rounded-lg p-6 mb-4 flex justify-between items-center" (click)="viewJobDetails()">
       <div>
         <h3 class="text-xl font-bold mb-2">{{ job.description }}</h3>
         <p class="text-gray-600">{{ job.description }}</p>
@@ -36,7 +37,11 @@ import { JobService } from '../services/job.service';
 export class JobRowComponent {
   @Input() job!: Job;
 
-  constructor(private jobService: JobService) {}
 
+  constructor(private router: Router, private jobService: JobService) {}
+
+  viewJobDetails() {
+    this.router.navigate(['/hr/job'], { queryParams: { id: this.job.jobPosId } });
+  }
 
 }

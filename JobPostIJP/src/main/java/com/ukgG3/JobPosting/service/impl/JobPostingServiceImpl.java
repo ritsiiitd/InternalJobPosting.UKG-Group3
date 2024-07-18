@@ -71,10 +71,10 @@ public class JobPostingServiceImpl implements IJobPostingService {
     }
 
     @Override
-    public boolean saveJobPosting(JobPostingDto dto) {
+    public JobPostingDto saveJobPosting(JobPostingDto dto) {
         JobPosting jobPosting = JobPostingMapper.mapToJobPosting(dto, locationRepository, codingLanguageRepository);
         jobPostingRepository.save(jobPosting);
-        return true;
+        return JobPostingMapper.mapToJobPostingDto(jobPosting);
     }
 
     @Override

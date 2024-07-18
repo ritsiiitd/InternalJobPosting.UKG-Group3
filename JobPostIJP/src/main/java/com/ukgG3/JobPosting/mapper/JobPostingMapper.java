@@ -36,6 +36,7 @@ public class JobPostingMapper {
     public static JobPosting mapToJobPosting(JobPostingDto dto, LocationRepository locationRepository, CodingLanguageRepository codingLanguageRepository) {
         JobPosting jobPosting = new JobPosting();
         jobPosting.setDescription(dto.getDescription());
+        jobPosting.setJobPosId(dto.getJobPosId());
         jobPosting.setMinExp(dto.getMinExp());
         jobPosting.setMinSal(dto.getMinSal());
         jobPosting.setMaxSal(dto.getMaxSal());

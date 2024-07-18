@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { JobRowComponent } from '../job-row/job-row.component';
 import { Job } from '../models/job.model';
 import { JobService } from '../services/job.service';
+
 
 @Component({
   selector: 'app-hr',
@@ -30,15 +32,23 @@ import { JobService } from '../services/job.service';
   `,
   styleUrls: ['./hr.component.css']
 })
-export class HrComponent implements OnInit {
+export class HrComponent implements OnInit, OnDestroy {
   jobs: Job[] = [];
+  private jobSubscription: Subscription | undefined;
 
   constructor(private router: Router, private jobService: JobService) {}
 
   ngOnInit() {
-    this.jobService.getJobs().subscribe(jobs => {
+    this.jobSubscription = this.jobService.getJobs().subscribe(jobs => {
+      console.log('Received updated jobs:', jobs);
       this.jobs = jobs;
     });
+  }
+
+  ngOnDestroy() {
+    if (this.jobSubscription) {
+      this.jobSubscription.unsubscribe();
+    }
   }
 
   navigateToNewJobForm() {
