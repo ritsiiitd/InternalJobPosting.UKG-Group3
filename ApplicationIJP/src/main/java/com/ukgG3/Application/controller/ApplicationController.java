@@ -39,6 +39,7 @@ public class ApplicationController {
 
 
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteApplication(@PathVariable Long id) {
         iApplicationService.deleteApplication(id);
@@ -59,6 +60,10 @@ public class ApplicationController {
     @GetMapping("/byEmployee/{employee_id}")
     public List<ApplicationDto> getApplicationsByEmployeeId(@PathVariable Long employee_id) {
         return iApplicationService.getApplicationsByEmployeeId(employee_id);
+    }
+    @GetMapping("/job/{jobId}")
+    public List<ApplicationDto> getApplicationsByJobId(@PathVariable Long jobId) {
+        return iApplicationService.getApplicationsByJobId(jobId);
     }
 
     @GetMapping("/hello")

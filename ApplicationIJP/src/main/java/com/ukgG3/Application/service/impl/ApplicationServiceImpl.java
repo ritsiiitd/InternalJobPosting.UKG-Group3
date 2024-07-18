@@ -92,4 +92,13 @@ public class ApplicationServiceImpl implements IApplicationService {
                 })
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ApplicationDto> getApplicationsByJobId(Long job_pos_id) {
+        return applicationRepository.findByjobPosId(job_pos_id).stream()
+                .map(application -> {
+                    return ApplicationMapper.mapToApplicationDto(application,new ApplicationDto());
+                })
+                .collect(Collectors.toList());
+    }
 }

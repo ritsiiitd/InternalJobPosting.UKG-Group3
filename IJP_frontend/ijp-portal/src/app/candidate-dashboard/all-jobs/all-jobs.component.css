@@ -29,3 +29,11 @@
    .card:nth-child(even) {
     background-color: #f8f9fa;
   }
+
+  /* all-jobs.component.css */
+button.applied {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+  /* all-jobs.component.css */

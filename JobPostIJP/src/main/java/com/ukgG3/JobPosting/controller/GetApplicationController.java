@@ -32,11 +32,14 @@ public class GetApplicationController {
             return ResponseEntity.status(HttpStatus.OK).body("Applications");
     }
 
+//    @GetMapping("/applications/job/{jobId}")
+//    public ResponseEntity<List<ApplicationDto>> getApplicationsByJobId(@PathVariable Long jobId) {
+//        List<ApplicationDto> applications = applicationFeignClientImpl.getApplicationsByJobId(jobId);
+//        return ResponseEntity.ok(applications);
+//    }
+
     @GetMapping("/jobpost/getAllApplications")
     public List<ApplicationDto> getAllApplications() {
-
-
-
         return applicationFeignClientImpl.getAllApplications();
     }
 

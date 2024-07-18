@@ -36,7 +36,7 @@ export const routes: Routes = [
   },
   { 
     path: 'hr/job', 
-    component: JobFormComponent, 
+    component: JobDetailsComponent, 
     canActivate: [AuthGuard],
     data: { roles: ['HR'] }
   },

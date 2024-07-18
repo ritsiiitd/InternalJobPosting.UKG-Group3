@@ -143,12 +143,16 @@ export class JobService {
   }
 
   getApplicationsByJobId(jobId: number): Observable<ApplicationDto[]> {
-    return this.http.get<ApplicationDto[]>(`${this.apiUrl}/applications/job/${jobId}`);
+    return this.http.get<ApplicationDto[]>(`http://localhost:8081/api/applications/job/${jobId}`);
   }
 
   getEmployeeById(employeeId: number): Observable<EmployeeDto> {
-    return this.http.get<EmployeeDto>(`${this.apiUrl}/employees/${employeeId}`);
+    const params = new HttpParams().set('id', employeeId.toString());
+    const employee = this.http.get<EmployeeDto>(`http://localhost:8082/api/employees/getById`, { params });
+    return employee
   }
+
+
 
   // getJobById(jobId: number): Observable<Job> {
   //   return this.http.get<Job>(`${this.apiUrl}/jobs/${jobId}`);

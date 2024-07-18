@@ -78,6 +78,10 @@ export class JobApplicationsComponent implements OnInit {
         error => console.error(`Error fetching employee ${id}:`, error)
       );
     });
+    console.log("THESE APPLICATIONS ",this.applications);
+    console.log("THIS JOB ",this.jobPosting);
+    console.log("THESE CANDIDATES ",this.employees);
+    
   }
 
   getEmployeeName(employeeId: number): string {

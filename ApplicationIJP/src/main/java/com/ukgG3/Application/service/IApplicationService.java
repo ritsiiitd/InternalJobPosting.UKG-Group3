@@ -16,4 +16,5 @@ public interface IApplicationService  {
 
     List<ApplicationDto> getApplicationsByEmployeeId(Long employee_id);
 
+    List<ApplicationDto> getApplicationsByJobId(Long jobId);
 }
