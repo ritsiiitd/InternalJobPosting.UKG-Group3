@@ -14,7 +14,7 @@ export interface Job {
 }
 
 export interface CodingLanguage {
-  id: number;
+  languageId: number;
   langName: string;
   skill: string;
 }

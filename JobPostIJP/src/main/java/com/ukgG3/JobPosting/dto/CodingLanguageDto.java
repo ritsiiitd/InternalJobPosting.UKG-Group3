@@ -13,5 +13,6 @@ import lombok.Setter;
 public class CodingLanguageDto {
     private Long languageId;
     private String langName;
+    private String skill;
 }
 

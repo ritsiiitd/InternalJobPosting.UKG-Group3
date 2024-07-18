@@ -5,7 +5,7 @@ import { CodingLanguage, Job } from '../models/job.model';
 
 
 export interface Location {
-    id: number;
+    locationId: number;
     name: string;
 }
 
@@ -62,11 +62,15 @@ export class JobService {
   }
 
   getLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>(`${this.apiUrl}/getAllLocations`);
+    const locations = this.http.get<Location[]>(`${this.apiUrl}/getAllLocations`)
+    console.log("Service locations: ", locations.forEach(location => console.log(location)));
+    return locations;
   }
-
+  
   getCodingLanguages(): Observable<CodingLanguage[]> {
-    return this.http.get<CodingLanguage[]>(`${this.apiUrl}/getAllCodingLanguages`);
+    const languages = this.http.get<CodingLanguage[]>(`${this.apiUrl}/getAllCodingLanguages`)
+    console.log("Service languages: ", languages.forEach(language => console.log(language)));
+    return languages;
   }
 
 
