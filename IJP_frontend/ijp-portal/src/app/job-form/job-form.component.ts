@@ -155,19 +155,29 @@ export class JobFormComponent implements OnInit {
   
   onSkillSelected(languageId: number) {
     console.log("Adding Language: ", languageId);
-    this.job.codingLanguages = this.job.codingLanguages.filter(
-      id => !this.languageGroups.some(group => 
-        group.skills.some(skill => skill.languageId === id && skill.languageId !== languageId)
-      )
+    
+    // Remove any previously selected skill from the same language group
+    const languageGroup = this.languageGroups.find(group => 
+      group.skills.some(skill => skill.languageId === languageId)
     );
+    if (languageGroup) {
+      this.job.codingLanguages = this.job.codingLanguages.filter(id => 
+        !languageGroup.skills.some(skill => skill.languageId === id && skill.languageId !== languageId)
+      );
+    }
+  
+    // Add the new skill if it's not already in the array
     if (!this.job.codingLanguages.includes(languageId)) {
       this.job.codingLanguages.push(languageId);
     }
+  
+    console.log("Current coding languages:", this.job.codingLanguages);
   }
 
   onSubmit() {
     console.log('Submitting job:', JSON.stringify(this.job));
-    this.jobService.addJob(this.job).subscribe(
+    console.log('Selected coding languages:', this.job.codingLanguages);
+      this.jobService.addJob(this.job).subscribe(
       response => {
         console.log('Job created successfully', response);
         this.router.navigate(['/hr']);

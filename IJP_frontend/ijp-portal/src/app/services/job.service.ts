@@ -95,4 +95,18 @@ export class JobService {
     return languages;
   }
 
+
+
+  // job.service.ts
+  getLocationById(id: number): Observable<Location> {
+    console.log("Service location: fetching location...... ");
+    const location = this.http.get<Location>(`${this.apiUrl}/getLocationById/${id}`);
+    console.log("Service location: ", location);
+    return location;
+  }
+
+  getCodingLanguageById(id: number): Observable<CodingLanguage> {
+    return this.http.get<CodingLanguage>(`${this.apiUrl}/getCodingLanguageById/${id}`);
+  }
+
 }

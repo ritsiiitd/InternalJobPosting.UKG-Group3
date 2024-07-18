@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../services/job.service';
-import { Job } from '../models/job.model';
+import { Job, CodingLanguage } from '../models/job.model';
+import { Location } from '../services/job.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-job-details',
@@ -38,6 +40,23 @@ import { Job } from '../models/job.model';
               <dt class="text-sm font-medium text-gray-500">Deadline</dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ job.deadline | date }}</dd>
             </div>
+
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Locations</dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                <span *ngFor="let location of jobLocations; let last = last">
+                  {{ location.name }}{{ !last ? ', ' : '' }}
+                </span>
+              </dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Coding Languages</dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                <span *ngFor="let lang of jobCodingLanguages; let last = last">
+                  {{ lang.langName }} ({{ lang.skill }}){{ !last ? ', ' : '' }}
+                </span>
+              </dd>
+            </div>
           </dl>
         </div>
       </div>
@@ -45,8 +64,13 @@ import { Job } from '../models/job.model';
   `,
   styleUrls: ['./job-details.component.css']
 })
+
 export class JobDetailsComponent implements OnInit {
   job: Job | null = null;
+  allLocations: Location[] = [];
+  allCodingLanguages: CodingLanguage[] = [];
+  jobLocations: Location[] = [];
+  jobCodingLanguages: CodingLanguage[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -57,11 +81,48 @@ export class JobDetailsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const jobId = params['id'];
       if (jobId) {
-        this.jobService.getJobById(Number(jobId)).subscribe(
-          job => this.job = job,
+        forkJoin({
+          job: this.jobService.getJobById(Number(jobId)),
+          locations: this.jobService.getLocations(),
+          languages: this.jobService.getCodingLanguages()
+        }).subscribe(
+          result => {
+            this.job = result.job;
+            this.allLocations = result.locations;
+            this.allCodingLanguages = result.languages;
+            this.filterJobDetails();
+          },
           error => console.error('Error fetching job details:', error)
         );
       }
     });
+  }
+
+  filterJobDetails() {
+    if (this.job) {
+      this.allLocations.map(location =>   
+        {
+          console.log("FOR me ", this.job?.locations);
+          console.log("FOR me ", location);
+          if(this.job?.locations.includes(location.locationId)){
+            this.jobLocations.push(location);
+            console.log("Adding me ", this.jobLocations);
+            
+          }
+        }
+      );
+      this.allCodingLanguages.map(codingLang =>   
+        {
+          console.log("FOR me ", this.job?.codingLanguages);
+          console.log("FOR me ", codingLang);
+          if(this.job?.codingLanguages.includes(codingLang.languageId)){
+            this.jobCodingLanguages.push(codingLang);
+          }
+        }
+      );
+      this.jobCodingLanguages = this.allCodingLanguages.filter(lang => 
+        this.job!.codingLanguages.includes(lang.languageId)
+      );
+    }
   }
 }

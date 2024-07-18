@@ -105,5 +105,23 @@ public class JobPostingController {
         }
     }
 
+    @GetMapping("/getCodingLanguageById")
+    public ResponseEntity<CodingLanguageDto> getCodingLanguageById(@RequestParam Long id) {
+        CodingLanguageDto codingLanguageDto= jobPostingService.getCodingLangById(id);
+        if (codingLanguageDto != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(codingLanguageDto);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+    @GetMapping("/getLocationById")
+    public ResponseEntity<LocationDto> getLocationById(@RequestParam Long id) {
+        LocationDto locationDto= jobPostingService.getLocationById(id);
+        if (locationDto != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(locationDto);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 
 }

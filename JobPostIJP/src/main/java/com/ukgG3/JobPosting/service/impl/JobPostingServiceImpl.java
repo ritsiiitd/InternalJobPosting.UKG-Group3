@@ -55,6 +55,23 @@ public class JobPostingServiceImpl implements IJobPostingService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public CodingLanguageDto getCodingLangById(Long id) {
+        return codingLanguageRepository.findById(id).map(codingLanguage -> {
+            return CodingLanguageMapper.mapToCodingLanguageDto(codingLanguage, new CodingLanguageDto());
+        })
+                .orElse(null);
+
+    }
+    @Override
+    public LocationDto getLocationById(Long id) {
+        return locationRepository.findById(id).map(location -> {
+            return LocationMapper.mapToLocationDto(location, new LocationDto());
+        })
+                .orElse(null);
+
+    }
+
 
     @Override
     public List<JobPostingDto> getAllJobPostings() {

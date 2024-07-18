@@ -13,5 +13,7 @@ public interface IJobPostingService {
     void deleteJobPosting(Long id);
     List<LocationDto> getAllLocations();
     List<CodingLanguageDto> getAllCodingLang();
+    CodingLanguageDto getCodingLangById(Long id);
+    LocationDto getLocationById(Long id);
     boolean updateIsActive(Long id, Boolean isActive);
 }
