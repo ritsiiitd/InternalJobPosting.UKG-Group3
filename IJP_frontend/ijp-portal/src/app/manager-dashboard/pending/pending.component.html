@@ -1,0 +1,17 @@
+<div>
+
+    <div *ngIf="pendingApplications.length > 0; else noPendingApplications">
+      <div *ngFor="let application of pendingApplications" class="application-card">
+        <h4>{{ application.first_name }} {{ application.last_name }}</h4>
+        <p><strong>Designation:</strong> {{ application.designation }}</p>
+        <p><strong>Application ID:</strong> {{ application.app_id }}</p>
+        <div class="button-container">
+          <button class="btn accept" (click)="acceptApplication(application.app_id)">Accept</button>
+          <button class="btn reject" (click)="rejectApplication(application.app_id)">Reject</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPendingApplications>
+      <p>No pending applications available.</p>
+    </ng-template>
+  </div>

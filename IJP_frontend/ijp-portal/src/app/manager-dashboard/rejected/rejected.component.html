@@ -1,0 +1,18 @@
+
+<div class="container">
+    <!-- <h2 class="mb-4">Rejected Applications</h2> -->
+    <div class="row">
+      <div class="col-12 mb-4" *ngFor="let app of rejectedApplications">
+        <div class="card">
+          <div class="card-header bg-danger text-white">
+            <strong>{{ app.first_name }} {{ app.last_name }}</strong>
+          </div>
+          <div class="card-body">
+            <p><strong>Application ID:</strong> {{ app.app_id }}</p>
+            <p><strong>Designation:</strong> {{ app.designation }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

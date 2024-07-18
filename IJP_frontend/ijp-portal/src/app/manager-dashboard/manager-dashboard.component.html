@@ -1,0 +1,13 @@
+<!-- <p>manager-dashboard works!</p> -->
+
+<h2 class="text-2xl font-bold mb-4">Manager Dashboard</h2>
+
+
+<div class="button-container">
+    <button class="btn" [routerLink]="['pending']">Pending</button>
+    <button class="btn" [routerLink]="['accepted']">Accepted</button>
+    <button class="btn" [routerLink]="['rejected']">Rejected</button>
+</div>
+
+<router-outlet></router-outlet>
+
