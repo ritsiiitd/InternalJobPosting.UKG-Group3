@@ -6,6 +6,8 @@ import { JobService } from '../services/job.service';
 import { Job, CodingLanguage } from '../models/job.model';
 import { Location } from '../services/job.service';
 import { forkJoin } from 'rxjs';
+import { Application } from '../models/JobPosting.model';
+import { ApplicationDto } from '../services/application.service';
 
 @Component({
   selector: 'app-job-details',
@@ -15,7 +17,7 @@ import { forkJoin } from 'rxjs';
     <div class="container mx-auto px-4 py-8" *ngIf="job">
       <h2 class="text-2xl font-bold mb-4">{{ job.designation }}</h2>
       <button (click)="viewApplications()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          View Applications
+          View Applications - ({{ applications.length }})
         </button>
       <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
@@ -74,6 +76,7 @@ export class JobDetailsComponent implements OnInit {
   allCodingLanguages: CodingLanguage[] = [];
   jobLocations: Location[] = [];
   jobCodingLanguages: CodingLanguage[] = [];
+  applications: ApplicationDto[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -90,15 +93,18 @@ export class JobDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const jobId = params['id'];
+    
       if (jobId) {
         forkJoin({
           job: this.jobService.getJobById(Number(jobId)),
           locations: this.jobService.getLocations(),
+          applications: this.jobService.getApplicationsByJobId(jobId),
           languages: this.jobService.getCodingLanguages()
         }).subscribe(
           result => {
             this.job = result.job;
             this.allLocations = result.locations;
+            this.applications = result.applications;
             this.allCodingLanguages = result.languages;
             this.filterJobDetails();
           },

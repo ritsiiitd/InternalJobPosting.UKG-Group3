@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a13c34ff-9db6-4dbd-9c8a-212e5a003619" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplicationIJP/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/controller/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/controller/ApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/repository/ApplicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/repository/ApplicationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/service/IApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/service/IApplicationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/service/impl/ApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/service/impl/ApplicationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/all-jobs/all-jobs.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/all-jobs/all-jobs.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/all-jobs/all-jobs.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/all-jobs/all-jobs.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/all-jobs/all-jobs.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/all-jobs/all-jobs.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/my-jobs/my-jobs.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/my-jobs/my-jobs.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/GetApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/GetApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/IJPcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/IJPcontroller.java" afterDir="false" />
-    </list>
+    <list default="true" id="a13c34ff-9db6-4dbd-9c8a-212e5a003619" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,7 +173,7 @@
       <workItem from="1721035777498" duration="173000" />
       <workItem from="1721120300517" duration="19936000" />
       <workItem from="1721273855783" duration="26090000" />
-      <workItem from="1721326803756" duration="2434000" />
+      <workItem from="1721326803756" duration="2775000" />
     </task>
     <servers />
   </component>
