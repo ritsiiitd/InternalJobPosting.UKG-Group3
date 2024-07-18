@@ -83,7 +83,6 @@ CREATE TABLE application (
                              employee_id INT,
                              job_pos_id INT,
                              status VARCHAR(255),
-                             verified_by_hr BOOLEAN,
                              verified_by_manager BOOLEAN,
                              FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
                              FOREIGN KEY (job_pos_id) REFERENCES job_posting(job_pos_id)
