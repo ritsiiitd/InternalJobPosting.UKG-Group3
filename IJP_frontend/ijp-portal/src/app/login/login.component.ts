@@ -15,7 +15,7 @@ import { NgOptimizedImage } from '@angular/common';
       <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
         <div>
           
-        <img class="mx-auto h-12 w-auto" src="/assets/images/logo.jpg" alt="Company logo">
+        <img class="mx-auto h-12 w-auto" src="/assets/images/logo.jpg" alt="Company">
 
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Welcome back
