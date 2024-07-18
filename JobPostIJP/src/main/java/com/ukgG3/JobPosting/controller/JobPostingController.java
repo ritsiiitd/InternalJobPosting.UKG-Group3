@@ -9,6 +9,8 @@ import com.ukgG3.JobPosting.mapper.JobPostingMapper;
 import com.ukgG3.JobPosting.mapper.LocationMapper;
 import com.ukgG3.JobPosting.service.IJobPostingService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/jobPostings")
 @AllArgsConstructor
 public class JobPostingController {
+    private static final Logger log = LoggerFactory.getLogger(JobPostingController.class);
     @Autowired
     private final IJobPostingService jobPostingService;
 
@@ -76,6 +79,7 @@ public class JobPostingController {
     @PutMapping("/closeJobPosting")
     public ResponseEntity<ResponseDto> updateIsActive(@RequestParam Long id) {
         boolean isUpdated = jobPostingService.updateIsActive(id, false);
+        System.out.println("Closing a job posting");
         if (isUpdated) {
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto("200", "Job Posting status updated successfully"));
         } else {

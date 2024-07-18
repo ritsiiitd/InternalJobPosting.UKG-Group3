@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CodingLanguage, Job } from '../models/job.model';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 export interface Location {
     locationId: number;
     name: string;
+}
+
+interface ResponseDto {
+  code: string;
+  message: string;
 }
 
 
@@ -39,16 +44,16 @@ export class JobService {
     );
   }
 
-  deleteJob(id: number): void {
-    this.http.delete(`${this.apiUrl}/deleteJob/${id}`).subscribe(
-      () => {
-        const currentJobs = this.jobsSubject.value;
-        const updatedJobs = currentJobs.filter(job => job.jobPosId !== id);
-        this.jobsSubject.next(updatedJobs);
-      },
-      error => console.error('Error deleting job:', error)
-    );
-  }
+  // deleteJob(id: number): void {
+  //   this.http.delete(`${this.apiUrl}/deleteJob/${id}`).subscribe(
+  //     () => {
+  //       const currentJobs = this.jobsSubject.value;
+  //       const updatedJobs = currentJobs.filter(job => job.jobPosId !== id);
+  //       this.jobsSubject.next(updatedJobs);
+  //     },
+  //     error => console.error('Error deleting job:', error)
+  //   );
+  // }
 
   addJob(job: Omit<Job, 'jobPosId'>): Observable<Job> {
     return this.http.post<Job>(`${this.apiUrl}/addJob`, job).pipe(
@@ -107,6 +112,33 @@ export class JobService {
 
   getCodingLanguageById(id: number): Observable<CodingLanguage> {
     return this.http.get<CodingLanguage>(`${this.apiUrl}/getCodingLanguageById/${id}`);
+  }
+
+
+  closeJob(id: number): Observable<ResponseDto> {
+    const params = new HttpParams().set('id', id.toString());
+    return this.http.put<ResponseDto>(`${this.apiUrl}/closeJobPosting`,null, { params })
+      .pipe(
+        tap(() => {
+            const currentJobs = this.jobsSubject.value;
+            const updatedJobs = currentJobs.map(job => 
+              job.jobPosId === id ? { ...job, isActive: false } : job
+            );
+            this.jobsSubject.next(updatedJobs);
+        })
+      );
+  }
+
+  deleteJob(id: number): Observable<void> {
+    const params = new HttpParams().set('id', id.toString());
+    return this.http.delete<void>(`${this.apiUrl}/deleteJob`, { params })
+      .pipe(
+        tap(() => {
+          const currentJobs = this.jobsSubject.value;
+          const updatedJobs = currentJobs.filter(job => job.jobPosId !== id);
+          this.jobsSubject.next(updatedJobs);
+        })
+      );
   }
 
 }
