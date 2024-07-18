@@ -30,6 +30,7 @@ public class JobPostingMapper {
         dto.setCodingLanguages(jobPosting.getCodingLanguages().stream()
                 .map(CodingLanguage::getLanguageId)
                 .collect(Collectors.toList()));
+
         return dto;
     }
 

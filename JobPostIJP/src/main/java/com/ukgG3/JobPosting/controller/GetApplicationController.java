@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200") // Apply CORS to all methods in this controller
 public class GetApplicationController {
     private final ApplicationFeignClientImpl applicationFeignClientImpl;
 

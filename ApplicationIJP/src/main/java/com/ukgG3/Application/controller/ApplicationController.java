@@ -51,7 +51,7 @@ public class ApplicationController {
     }
     @PutMapping("/{id}/verifyByManagerRejected")
     public ResponseEntity<ResponseDto> verifyApplicationByManagerRejected(@PathVariable Long id) {
-        iApplicationService.verifyApplicationByManagerAccepted(id);
+        iApplicationService.verifyApplicationByManagerRejected(id);
         return ResponseEntity.ok(new ResponseDto("200", "Application rejection verified by manager successfully"));
     }
 
