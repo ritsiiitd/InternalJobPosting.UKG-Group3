@@ -24,7 +24,7 @@ export interface EmployeeDto {
   providedIn: 'root'
 })
 export class ApplicationService {
-  private apiUrl = 'http://localhost:8081/api'; // Adjust this to your API gateway URL
+  private apiUrl = 'http://localhost:8072/api'; // Adjust this to your API gateway URL
 
   constructor(private http: HttpClient) {}
 

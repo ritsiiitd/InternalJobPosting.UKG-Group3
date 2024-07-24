@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/jobPostings")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class JobPostingController {
     private static final Logger log = LoggerFactory.getLogger(JobPostingController.class);
     @Autowired

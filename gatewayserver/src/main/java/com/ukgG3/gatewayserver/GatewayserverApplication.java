@@ -17,7 +17,7 @@ public class GatewayserverApplication {
 	@Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()
-				.route("job-posting-service", p -> p.path("/api/jobPostings/**", "/api/employees/**")
+				.route("job-posting-service", p -> p.path("/api/jobPostings/**", "/api/employees/**","/api/jobpost/**")
 						.uri("lb://jobposting"))
 				.route("application-service", p -> p.path("/api/applications/**")
 						.uri("lb://application"))

@@ -56,7 +56,7 @@
                     'bg-warning': application.status === 'pending',
                     'bg-success': application.status === 'ACCEPTED',
                     'bg-danger': application.status === 'REJECTED'
-                  }">{{ application.status }}</span>
+                  }">{{ application.status | uppercase}}</span>
                 </p>
               </div>
             </div>

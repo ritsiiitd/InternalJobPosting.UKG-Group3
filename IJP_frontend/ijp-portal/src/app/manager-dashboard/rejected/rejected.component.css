@@ -1,4 +1,40 @@
-div[_ngcontent-ng-c3713704744][_ngcontent-ng-c3713704744] {
-    max-width: 550px;
-    min-width: 550px;
-}
+.container {
+    margin-top: 20px;
+  }
+  
+  .card {
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    font-size: 1.25rem;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .card-body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  p {
+    margin-bottom: 0.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .card {
+      min-width: 550px;
+      max-width: 550px;
+    }
+  }
+  
+ 

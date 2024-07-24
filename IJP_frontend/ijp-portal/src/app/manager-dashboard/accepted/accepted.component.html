@@ -1,10 +1,8 @@
- 
 <div class="container">
-    <!-- <h2 class="mb-4">Accepted Applications</h2> -->
     <div class="row">
-      <div class="col-12 mb-4" *ngFor="let app of acceptedApplications">
-        <div class="card">
-          <div class="card-header bg-success text-white">
+      <div class="col-12 col-md-6 mb-4" *ngFor="let app of acceptedApplications">
+        <div class="card shadow-sm">
+          <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
             <strong>{{ app.first_name }} {{ app.last_name }}</strong>
           </div>
           <div class="card-body">
@@ -15,5 +13,4 @@
       </div>
     </div>
   </div>
-  
  

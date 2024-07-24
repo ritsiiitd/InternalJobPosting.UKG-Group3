@@ -21,7 +21,7 @@ interface ResponseDto {
 })
 
 export class JobService {
-  private apiUrl = 'http://localhost:8082/api/jobPostings'; // Gateway URL
+  private apiUrl = 'http://localhost:8072/api/jobPostings'; // Gateway URL
   private jobsSubject = new BehaviorSubject<Job[]>([]);
 
   constructor(private http: HttpClient) {
@@ -143,12 +143,12 @@ export class JobService {
   }
 
   getApplicationsByJobId(jobId: number): Observable<ApplicationDto[]> {
-    return this.http.get<ApplicationDto[]>(`http://localhost:8081/api/applications/job/${jobId}`);
+    return this.http.get<ApplicationDto[]>(`http://localhost:8072/api/applications/job/${jobId}`);
   }
 
   getEmployeeById(employeeId: number): Observable<EmployeeDto> {
     const params = new HttpParams().set('id', employeeId.toString());
-    const employee = this.http.get<EmployeeDto>(`http://localhost:8082/api/employees/getById`, { params });
+    const employee = this.http.get<EmployeeDto>(`http://localhost:8072/api/employees/getById`, { params });
     return employee
   }
 

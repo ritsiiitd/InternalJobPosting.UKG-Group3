@@ -80,10 +80,9 @@
             <div class="mt-3">
               <!-- <button class="btn btn-primary" (click)="applyForJob(job.jobPosId)">Apply Now</button> -->
               <button 
-              [ngClass]="appliedJobs.has(job.jobPosId) ? 'btn btn-secondary' : 'btn btn-primary'" 
-              (click)="applyForJob(job.jobPosId)" 
-              [disabled]="isJobApplied(job.jobPosId)">
-              {{ appliedJobs.has(job.jobPosId) ? 'Applied' : 'Apply' }}
+              [ngClass]="appliedJobs.has(job.jobPosId) ? 'btn btn-primary' : 'btn btn-primary'" 
+              (click)="applyForJob(job.jobPosId)" >
+              {{ 'Apply' }}
             </button>
             </div>
           </div>

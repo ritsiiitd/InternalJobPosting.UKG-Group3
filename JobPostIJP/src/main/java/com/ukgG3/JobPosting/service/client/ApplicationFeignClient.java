@@ -29,8 +29,5 @@ public interface ApplicationFeignClient {
     @PutMapping("/api/applications/{id}/verifyByManagerRejected")
     ResponseDto verifyApplicationByManagerRejected(@PathVariable("id") Long id);
 
-//    @GetMapping("/api/getAllApplications")
-//    List<ApplicationDto> getAllApplications() ;
-//    @GetMapping("/api/applications/hello")
-//    String helloWorld();
+
 }

@@ -67,7 +67,7 @@ import { JobService, Location } from '../services/job.service';
                        [name]="'skill-' + skill.langName"
                        [value]="skill.languageId" 
                        (change)="onSkillSelected(skill.languageId)">
-                {{ skill.languageId }}
+                {{ skill.skill }}
               </div>
             </div>
           </div>

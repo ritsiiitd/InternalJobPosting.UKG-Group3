@@ -34,8 +34,7 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     private void sendCommunication(Application savedApplication) {
         ApplicationMessageDto applicationMessageDto = new ApplicationMessageDto("testEmail@test.com", "Application created with id: " + savedApplication.getApplicationId());
-//        boolean isSent = streamBridge.send("sendCommunication-out-0", applicationMessageDto);
-//        logger
+
     }
 
     @Override

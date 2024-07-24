@@ -9,8 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ukgG3</groupId>
-	<artifactId>JobPostIJP</artifactId>
+	<artifactId>jobpostijp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>JobPostIJP</name>
 	<description>Internal job Portal Application</description>
 
@@ -131,6 +132,17 @@
 
 	<build>
 		<plugins>
+			<plugin>
+			<groupId>com.google.cloud.tools</groupId>
+			<artifactId>jib-maven-plugin</artifactId>
+			<version>3.4.1</version>
+			<configuration>
+				<to>
+					<image>ritzzikukg/${project.artifactId}:1.0.0</image>
+				</to>
+			</configuration>
+		</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

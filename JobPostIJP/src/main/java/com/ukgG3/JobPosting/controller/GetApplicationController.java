@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class GetApplicationController {
     private final ApplicationFeignClientImpl applicationFeignClientImpl;
 
@@ -32,11 +32,7 @@ public class GetApplicationController {
             return ResponseEntity.status(HttpStatus.OK).body("Applications");
     }
 
-//    @GetMapping("/applications/job/{jobId}")
-//    public ResponseEntity<List<ApplicationDto>> getApplicationsByJobId(@PathVariable Long jobId) {
-//        List<ApplicationDto> applications = applicationFeignClientImpl.getApplicationsByJobId(jobId);
-//        return ResponseEntity.ok(applications);
-//    }
+
 
     @GetMapping("/jobpost/getAllApplications")
     public List<ApplicationDto> getAllApplications() {
@@ -66,11 +62,6 @@ public class GetApplicationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
-//    @GetMapping("/jobpost/applications/{id}")
-//    public ResponseEntity<ApplicationDto> getApplicationById(@PathVariable Long id) {
-//        ApplicationDto applicationDto = applicationFeignClientImpl.getApplicationById(id);
-//        return ResponseEntity.ok(applicationDto);
-//    }
 
     @DeleteMapping("/jobpost/deleteApplications/{id}")
     public ResponseEntity<Void> deleteApplication(@PathVariable Long id) {

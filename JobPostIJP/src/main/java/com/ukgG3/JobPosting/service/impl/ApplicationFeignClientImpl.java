@@ -94,12 +94,6 @@ public class ApplicationFeignClientImpl implements IApplicationsDetails {
             applicationsDetailsDtos.add(aDetails);
         }
 
-//        List<ApplicationDetailsDto> applicationDetailsDtos = new ArrayList<>();
-//
-//        for (ApplicationsDetails ad : applicationsDetails) {
-//            ApplicationDetailsDto applicationDetailsDto = ApplicationsDetailsMapper.mapToApplicationDetailsDto(ad);
-//            applicationDetailsDtos.add(applicationDetailsDto);
-//        }
 
         return applicationsDetailsDtos;
 
@@ -118,7 +112,6 @@ public class ApplicationFeignClientImpl implements IApplicationsDetails {
 
 
 
-//            if (employee != null  && employee.getReportsTo()==mgId) {
                 if (employee != null && employee.getReportsTo() != null && employee.getReportsTo() == mgId.intValue()) {
                 ApplicationDetailsDto aDetails = new ApplicationDetailsDto();
                 if (employee != null) {
@@ -146,61 +139,10 @@ public class ApplicationFeignClientImpl implements IApplicationsDetails {
             }
         }
 
-//        List<ApplicationDetailsDto> applicationDetailsDtos = new ArrayList<>();
-//
-//        for (ApplicationsDetails ad : applicationsDetails) {
-//            ApplicationDetailsDto applicationDetailsDto = ApplicationsDetailsMapper.mapToApplicationDetailsDto(ad);
-//            applicationDetailsDtos.add(applicationDetailsDto);
-//        }
 
         return applicationsDetailsDtos;
 
     }
-
-
-
-    //above
-//    public String helloWorld() {
-//        return applicationFeignClient.helloWorld();
-//    }
 }
 
 
-//@Service
-//public class ApplicationFeignClientImpl implements  {
-//
-//    private final ApplicationFeignClient applicationFeignClient;
-//
-//    @Autowired
-//    public ApplicationFeignClientImpl(ApplicationFeignClient applicationFeignClient) {
-//        this.applicationFeignClient = applicationFeignClient;
-//    }
-//
-//    public List<ApplicationDto> getAllApplications() {
-//        return applicationFeignClient.getAllApplications();
-//    }
-//
-//    public ResponseDto createApplication(ApplicationDto applicationDto) {
-//        return applicationFeignClient.createApplication(applicationDto);
-//    }
-//
-//    public ApplicationDto getApplicationById(Long id) {
-//        return applicationFeignClient.getApplicationById(id);
-//    }
-//
-//    public void deleteApplication(Long id) {
-//        applicationFeignClient.deleteApplication(id);
-//    }
-//
-//    public ResponseDto verifyApplicationByManager(Long id) {
-//        return applicationFeignClient.verifyApplicationByManager(id);
-//    }
-//
-//    public ResponseDto verifyApplicationByManagerRejected(Long id) {
-//        return applicationFeignClient.verifyApplicationByManagerRejected(id);
-//    }
-//
-//    public String helloWorld() {
-//        return applicationFeignClient.helloWorld();
-//    }
-//}

@@ -9,7 +9,7 @@ import { Application } from '../models/JobPosting.model';
     
   })
 export class JobPostingService {
-  private apiUrl = 'http://localhost:8082/api/';
+  private apiUrl = 'http://localhost:8072/api/';
  
   constructor(private http: HttpClient) {}
  

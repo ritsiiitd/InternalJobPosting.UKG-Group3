@@ -4,7 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a13c34ff-9db6-4dbd-9c8a-212e5a003619" name="Changes" comment="" />
+    <list default="true" id="a13c34ff-9db6-4dbd-9c8a-212e5a003619" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ApplicationIJP/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JobPostIJP/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configserver/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eurekaserver/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gatewayserver/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationIJP/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/controller/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/controller/ApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/service/impl/ApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/src/main/java/com/ukgG3/Application/service/impl/ApplicationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationIJP/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationIJP/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/my-jobs/my-jobs.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/candidate-dashboard/my-jobs/my-jobs.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/JobPosting.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/JobPosting.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/application.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/application.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/job.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/job.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/manager-application.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IJP_frontend/ijp-portal/src/app/services/manager-application.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobPostIJP/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/GetApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/GetApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/IJPcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/IJPcontroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/JobPostingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/controller/JobPostingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/service/client/ApplicationFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/service/client/ApplicationFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/service/impl/ApplicationFeignClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/src/main/java/com/ukgG3/JobPosting/service/impl/ApplicationFeignClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobPostIJP/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/JobPostIJP/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatewayserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/ukgG3/gatewayserver/GatewayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/ukgG3/gatewayserver/GatewayserverApplication.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,37 +56,48 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2jGjYvgUxbzgCT6WvqqS6OcuNwI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaClassFindUsagesOptions.isMethodsUsages&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ConfigserverApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EurekaserverApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GatewayserverApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.IjpApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.JobPosting.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ritickFrontend&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JAR Application.configserver-0.0.1-SNAPSHOT.jar.executor": "Run",
+    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ConfigserverApplication.executor": "Run",
+    "Spring Boot.EurekaserverApplication.executor": "Run",
+    "Spring Boot.GatewayserverApplication.executor": "Run",
+    "Spring Boot.IjpApplication.executor": "Run",
+    "Spring Boot.JobPosting.executor": "Run",
+    "git-widget-placeholder": "ritickFrontend",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "spring",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker-compose" />
+      <recent name="$PROJECT_DIR$/ApplicationIJP" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -67,16 +108,14 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.JobPosting">
-    <configuration name="ConfigserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.IjpApplication">
+    <configuration name="configserver-0.0.1-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/configserver/target/configserver-0.0.1-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ConfigserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="configserver" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ukg.configserver.ConfigserverApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ukg.configserver.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -145,11 +184,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.JobPosting" />
-        <item itemvalue="Spring Boot.IjpApplication" />
         <item itemvalue="Spring Boot.GatewayserverApplication" />
+        <item itemvalue="Spring Boot.IjpApplication" />
+        <item itemvalue="Spring Boot.JobPosting" />
         <item itemvalue="Spring Boot.EurekaserverApplication" />
-        <item itemvalue="Spring Boot.ConfigserverApplication" />
+        <item itemvalue="JAR Application.configserver-0.0.1-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -173,11 +212,16 @@
       <workItem from="1721035777498" duration="173000" />
       <workItem from="1721120300517" duration="19936000" />
       <workItem from="1721273855783" duration="26090000" />
-      <workItem from="1721326803756" duration="2775000" />
+      <workItem from="1721326803756" duration="5829000" />
+      <workItem from="1721357651705" duration="10643000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

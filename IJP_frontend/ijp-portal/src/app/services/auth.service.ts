@@ -15,7 +15,7 @@ interface Employee {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8082/api/employees/getAll';
+  private apiUrl = 'http://localhost:8072/api/employees/getAll';
   private currentUserSubject: BehaviorSubject<{ role: string, employee_id: number } | null>;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -81,6 +81,12 @@ export class AuthService {
   hasRole(role: string): boolean {
     return this.currentUser?.role === role;
   }
+
+  // In auth.service.ts
+
+getCurrentUserRole(): string | null {
+  return this.currentUser?.role || null;
+}
 
   getRouteForRole(role: string): string {
     switch (role) {
